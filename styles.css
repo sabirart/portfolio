@@ -109,7 +109,7 @@ p {
 }
 
 /* Responsive Navbar */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
 
   .container{
     align-items: start;
