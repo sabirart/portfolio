@@ -109,7 +109,7 @@ p {
 }
 
 /* Responsive Navbar */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
 
   .container{
     align-items: start;
@@ -120,7 +120,7 @@ p {
   align-items: start;
 }
 .logo{
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   align-items: start;
 
 }
