@@ -18,41 +18,53 @@ document.addEventListener('DOMContentLoaded', () => {
     `,
     about: `
       <section id="about" class="about">
-        <div class="container">
-          <div class="profile-image">
-            <img src="images/profile.png" alt="Profile Image" loading="lazy">
-          </div>
-          <div class="about-content">
-            <div class="bio">
-              <h3>Hi, I'm Sabir Hussain,</h3>
-              <p style="text-align: left;">A passionate UI/UX and Graphic Designer dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. Let’s create something extraordinary together!</p>
-              <div class="skills">
-                <h3>Skills & Tools</h3>
-                <ul>
-                  <li>Figma</li>
-                  <li>Adobe XD</li>
-                  <li>Sketch</li>
-                  <li>Adobe Photoshop</li>
-                  <li>Adobe Illustrator</li>
-                  <li>Adobe After Effects</li>
-                  <li>Adobe Premiere Pro</li>
-                  <li>CorelDRAW</li>
-                  <li>Canva</li>
-                  <li>Blender (3D Design)</li>
-                  <li>HTML/CSS</li>
-                  <li>JavaScript</li>
-                  <li>WordPress</li>
-                  <li>UI/UX Design</li>
-                  <li>Brand Identity Design</li>
-                  <li>Prototyping</li>
-                  <li>Motion Graphics</li>
-                  <li>Typography</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+  <div class="container">
+    <div class="profile-image">
+      <img src="images/profile.png" alt="Profile Image" loading="lazy">
+    </div>
+    <div class="about-content">
+      <div class="bio">
+        <h3>Hi, I'm Sabir Hussain,</h3>
+        <p style="text-align: left;">A passionate UI/UX and Graphic Designer dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. Let’s create something extraordinary together!</p>
+        <div class="skills">
+          <h3>Skills & Tools</h3>
+          <ul>
+            <li><i class="fab fa-figma"></i> Figma</li>
+            <li>
+              <img src="icons/adobe-xd.svg" alt="adobe" class="custom-icon"> Adobe XD
+            </li>
+            <li><i class="fab fa-sketch"></i> Sketch</li>
+ <li>
+              <img src="icons/adobe-ps.svg" alt="adobe-ps" class="custom-icon"> Adobe Photoshop
+ </li>
+<li>
+              <img src="icons/adobe-ai.svg" alt="adobe-ai" class="custom-icon"> Adobe Illustrator
+ </li>
+<li>
+              <img src="icons/adobe-ae.svg" alt="adobe-ae" class="custom-icon"> Adobe After Effects
+</li>
+<li>
+              <img src="icons/adobe-pr.svg" alt="adobe-pr" class="custom-icon"> Adobe Premiere Pro
+</li>
+             <li><i class="fas fa-pen-nib"></i> CorelDRAW</li>
+<li>
+              <img src="icons/canva.svg" alt="canva" class="custom-icon"> Canva
+ </li>
+             <li><i class="fas fa-cube"></i> Blender (3D Design)</li>
+            <li><i class="fab fa-html5"></i> HTML/CSS</li>
+            <li><i class="fab fa-js"></i> JavaScript</li>
+            <li><i class="fab fa-wordpress"></i> WordPress</li>
+            <li><i class="fas fa-pencil-ruler"></i> UI/UX Design</li>
+            <li><i class="fas fa-palette"></i> Brand Identity Design</li>
+            <li><i class="fas fa-shapes"></i> Prototyping</li>
+            <li><i class="fas fa-film"></i> Motion Graphics</li>
+            <li><i class="fas fa-text-height"></i> Typography</li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
     `,
     portfolio: `
       <section id="portfolio" class="portfolio">
