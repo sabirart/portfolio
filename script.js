@@ -1,23 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Toggle mobile navigation
-  const hamburger = document.querySelector('.hamburger');
-  const mobileNav = document.querySelector('.mobile-navbar');
-
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      mobileNav.classList.toggle('active');
-      hamburger.classList.toggle('active'); // Add active class to hamburger for animations
-    });
-
-    // Close mobile menu when a link is clicked
-    document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        hamburger.classList.remove('active');
-      });
-    });
-  }
-
   // Content for each section
   const pages = {
     home: `
