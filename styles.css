@@ -343,7 +343,7 @@ p {
 }
 
 .hero-subtitle {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 30px;
   animation: fadeInUp 1.5s ease-out;
@@ -351,11 +351,15 @@ p {
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
+  
+  .hero {
+    height: 86vh;
+    padding: 20px;
 }
-
+.hero-title{
+  font-size: 3.2rem;
+}
+}
 /* About Section */
 .about {
   padding: 40px 10px;
@@ -747,7 +751,7 @@ p {
   }
 
   .modal{
-    padding-top: 20%;
+    padding-top: 22%;
   }
 
   .modal-content {
