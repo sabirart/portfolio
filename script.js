@@ -310,16 +310,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const captions = [];
 
     gridItems.forEach((item, index) => {
-      const img = item.querySelector(".project-img");
-      const video = item.querySelector("video");
+        const img = item.querySelector(".project-img");
+        const video = item.querySelector("video");
 
-      if (img) {
-        mediaItems.push({ type: "image", src: img.src });
-        captions.push(item.querySelector(".overlay p").innerText);
-      } else if (video) {
-        mediaItems.push({ type: "video", src: video.querySelector("source").src });
-        captions.push(item.querySelector(".overlay p").innerText);
-      }
+        if (img) {
+            mediaItems.push({ type: "image", src: img.src });
+            captions.push(item.querySelector(".overlay p").innerText);
+        } else if (video) {
+            mediaItems.push({ type: "video", src: video.querySelector("source").src });
+            captions.push(item.querySelector(".overlay p").innerText);
+        }
     });
 
     let currentIndex = 0;
@@ -327,151 +327,214 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomLevels = [1, 1.5]; // Allowed zoom levels: 1x, 1.5x
     let isDragging = false;
     let startX, startY, translateX = 0, translateY = 0;
+    let touchStartX, touchStartY, touchEndX, touchEndY;
 
     // Function to open modal at the user's current viewport position
     function openModal(index) {
-      modal.style.display = "block";
-      currentIndex = index;
-      scale = 1; // Reset zoom scale
-      translateX = 0; // Reset translate X
-      translateY = 0; // Reset translate Y
+        modal.style.display = "block";
+        currentIndex = index;
+        scale = 1; // Reset zoom scale
+        translateX = 0; // Reset translate X
+        translateY = 0; // Reset translate Y
 
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const viewportHeight = window.innerHeight;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const viewportHeight = window.innerHeight;
 
-      modal.style.top = `${scrollTop}px`;
-      modal.style.height = `${viewportHeight}px`;
+        modal.style.top = `${scrollTop}px`;
+        modal.style.height = `${viewportHeight}px`;
 
-      if (mediaItems[index].type === "image") {
-        modalImg.src = mediaItems[index].src;
-        modalImg.style.display = "block";
-        modalVideo.style.display = "none";
-        modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`; // Apply initial scale and translation
-      } else {
-        modalVideo.src = mediaItems[index].src;
-        modalVideo.style.display = "block";
-        modalImg.style.display = "none";
-      }
+        if (mediaItems[index].type === "image") {
+            modalImg.src = mediaItems[index].src;
+            modalImg.style.display = "block";
+            modalVideo.style.display = "none";
+            modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`; // Apply initial scale and translation
+        } else {
+            modalVideo.src = mediaItems[index].src;
+            modalVideo.style.display = "block";
+            modalImg.style.display = "none";
+        }
 
-      captionText.innerHTML = captions[index];
-      document.body.style.overflow = 'hidden'; // Disable page scroll when modal is open
+        captionText.innerHTML = captions[index];
+        document.body.style.overflow = 'hidden'; // Disable page scroll when modal is open
     }
 
     gridItems.forEach((item, index) => {
-      const img = item.querySelector(".project-img");
-      const video = item.querySelector("video");
+        const img = item.querySelector(".project-img");
+        const video = item.querySelector("video");
 
-      if (img) img.addEventListener("click", () => openModal(index));
-      if (video) video.addEventListener("click", () => openModal(index));
+        if (img) img.addEventListener("click", () => openModal(index));
+        if (video) video.addEventListener("click", () => openModal(index));
     });
 
     leftArrow.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-      openModal(currentIndex);
+        currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+        openModal(currentIndex);
     });
 
     rightArrow.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % mediaItems.length;
-      openModal(currentIndex);
+        currentIndex = (currentIndex + 1) % mediaItems.length;
+        openModal(currentIndex);
     });
 
     closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-      modalVideo.pause();
-      document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
-    });
-
-    modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
         modal.style.display = "none";
         modalVideo.pause();
         document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
-      }
+    });
+
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+            modalVideo.pause();
+            document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
+        }
     });
 
     document.addEventListener("keydown", (event) => {
-      if (modal.style.display === "block") {
-        if (event.key === "Escape") {
-          modal.style.display = "none";
-          modalVideo.pause();
-          document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
-        } else if (event.key === "ArrowLeft") {
-          currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-          openModal(currentIndex);
-        } else if (event.key === "ArrowRight") {
-          currentIndex = (currentIndex + 1) % mediaItems.length;
-          openModal(currentIndex);
+        if (modal.style.display === "block") {
+            if (event.key === "Escape") {
+                modal.style.display = "none";
+                modalVideo.pause();
+                document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
+            } else if (event.key === "ArrowLeft") {
+                currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+                openModal(currentIndex);
+            } else if (event.key === "ArrowRight") {
+                currentIndex = (currentIndex + 1) % mediaItems.length;
+                openModal(currentIndex);
+            }
         }
-      }
     });
 
     modalImg.addEventListener("wheel", (event) => {
-      if (mediaItems[currentIndex].type === "image") {
-        event.preventDefault();
+        if (mediaItems[currentIndex].type === "image") {
+            event.preventDefault();
 
-        const imageRect = modalImg.getBoundingClientRect();
-        const offsetX = event.clientX - imageRect.left;
-        const offsetY = event.clientY - imageRect.top;
+            const imageRect = modalImg.getBoundingClientRect();
+            const offsetX = event.clientX - imageRect.left;
+            const offsetY = event.clientY - imageRect.top;
 
-        const zoomDirection = event.deltaY < 0 ? 1 : -1;
-        const currentZoomIndex = zoomLevels.indexOf(scale);
-        let newZoomIndex = currentZoomIndex + zoomDirection;
+            const zoomDirection = event.deltaY < 0 ? 1 : -1;
+            const currentZoomIndex = zoomLevels.indexOf(scale);
+            let newZoomIndex = currentZoomIndex + zoomDirection;
 
-        if (newZoomIndex < 0) newZoomIndex = 0;
-        if (newZoomIndex >= zoomLevels.length) newZoomIndex = zoomLevels.length - 1;
+            if (newZoomIndex < 0) newZoomIndex = 0;
+            if (newZoomIndex >= zoomLevels.length) newZoomIndex = zoomLevels.length - 1;
 
-        scale = zoomLevels[newZoomIndex];
+            scale = zoomLevels[newZoomIndex];
 
-        const transformOriginX = (offsetX / modalImg.offsetWidth) * 100;
-        const transformOriginY = (offsetY / modalImg.offsetHeight) * 100;
+            const transformOriginX = (offsetX / modalImg.offsetWidth) * 100;
+            const transformOriginY = (offsetY / modalImg.offsetHeight) * 100;
 
-        modalImg.style.transition = "transform 0.3s ease";
-        modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-        modalImg.style.transformOrigin = `${transformOriginX}% ${transformOriginY}%`;
-      }
+            modalImg.style.transition = "transform 0.3s ease";
+            modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+            modalImg.style.transformOrigin = `${transformOriginX}% ${transformOriginY}%`;
+        }
     });
 
     // Drag functionality for zoomed-in images with persistent drag after mouse leave
     modalImg.addEventListener("mousedown", (event) => {
-      if (scale > 1 && event.button === 0) {
-        isDragging = true;
-        startX = event.clientX - translateX;
-        startY = event.clientY - translateY;
-        modalImg.style.cursor = "grabbing";
-      }
+        if (scale > 1 && event.button === 0) {
+            isDragging = true;
+            startX = event.clientX - translateX;
+            startY = event.clientY - translateY;
+            modalImg.style.cursor = "grabbing";
+        }
     });
 
     modalImg.addEventListener("mousemove", (event) => {
-      if (isDragging) {
-        event.preventDefault();
-        translateX = event.clientX - startX;
-        translateY = event.clientY - startY;
-        modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-      }
+        if (isDragging) {
+            event.preventDefault();
+            translateX = event.clientX - startX;
+            translateY = event.clientY - startY;
+            modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        }
     });
 
     modalImg.addEventListener("mouseup", () => {
-      if (isDragging) {
-        isDragging = false;
-        modalImg.style.cursor = "grab";
-      }
+        if (isDragging) {
+            isDragging = false;
+            modalImg.style.cursor = "grab";
+        }
     });
 
     modalImg.addEventListener("mouseleave", () => {
-      if (isDragging) {
-        isDragging = false;
-        modalImg.style.cursor = "grab";
-      }
+        if (isDragging) {
+            isDragging = false;
+            modalImg.style.cursor = "grab";
+        }
     });
 
     modalImg.addEventListener("click", () => {
-      scale = 1;
-      translateX = 0;
-      translateY = 0;
-      modalImg.style.transition = "transform 0.3s ease";
-      modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        modalImg.style.transition = "transform 0.3s ease";
+        modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
     });
-  }
 
+    // Touch event handlers for mobile gestures
+    modalImg.addEventListener("touchstart", (event) => {
+        if (event.touches.length === 1) {
+            // Single touch for swipe gestures
+            touchStartX = event.touches[0].clientX;
+            touchStartY = event.touches[0].clientY;
+        } else if (event.touches.length === 2) {
+            // Pinch gesture for zoom
+            const touch1 = event.touches[0];
+            const touch2 = event.touches[1];
+            const distance = Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+            );
+            touchStartX = (touch1.clientX + touch2.clientX) / 2;
+            touchStartY = (touch1.clientY + touch2.clientY) / 2;
+            touchStartDistance = distance;
+        }
+    });
 
+    modalImg.addEventListener("touchmove", (event) => {
+        if (event.touches.length === 1 && scale === 1) {
+            // Single touch for swipe gestures
+            touchEndX = event.touches[0].clientX;
+            touchEndY = event.touches[0].clientY;
+        } else if (event.touches.length === 2) {
+            // Pinch gesture for zoom
+            const touch1 = event.touches[0];
+            const touch2 = event.touches[1];
+            const distance = Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+            );
+            const scaleChange = distance / touchStartDistance;
+
+            scale = Math.min(Math.max(1, scale * scaleChange), 2); // Limit zoom between 1x and 2x
+            modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        }
+    });
+
+    modalImg.addEventListener("touchend", (event) => {
+        if (event.changedTouches.length === 1 && scale === 1) {
+            // Single touch for swipe gestures
+            touchEndX = event.changedTouches[0].clientX;
+            touchEndY = event.changedTouches[0].clientY;
+
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                // Horizontal swipe
+                if (deltaX > 50) {
+                    // Swipe right (previous image)
+                    currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+                    openModal(currentIndex);
+                } else if (deltaX < -50) {
+                    // Swipe left (next image)
+                    currentIndex = (currentIndex + 1) % mediaItems.length;
+                    openModal(currentIndex);
+                }
+            }
+        }
+    });
+}
 });
