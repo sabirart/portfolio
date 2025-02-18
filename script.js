@@ -6,12 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hamburger && mobileNav) {
     hamburger.addEventListener('click', () => {
       mobileNav.classList.toggle('active');
+      hamburger.classList.toggle('active'); // Add active class to hamburger for animations
     });
 
     // Close mobile menu when a link is clicked
     document.querySelectorAll('.mobile-nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         mobileNav.classList.remove('active');
+        hamburger.classList.remove('active');
       });
     });
   }
@@ -37,13 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
       <section id="about" class="about">
         <div class="container">
           <div class="profile-image">
-            <img src="images/profile.png" alt="Profile Image">
+            <img src="images/profile.png" alt="Profile Image" loading="lazy">
           </div>
           <div class="about-content">
             <div class="bio">
-            <h3>Hi, I'm  Sabir Hussain,</h3>
-              <p style="text-align: left";> a passionate UI/UX and Graphic Designer dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. Let’s create something extraordinary together!</p>
-       <div class="skills">
+              <h3>Hi, I'm Sabir Hussain,</h3>
+              <p style="text-align: left;">A passionate UI/UX and Graphic Designer dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. Let’s create something extraordinary together!</p>
+              <div class="skills">
                 <h3>Skills & Tools</h3>
                 <ul>
                   <li>Figma</li>
@@ -88,19 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
       </section>
     `,
     contact: `
-     <section id="contact" class="contact">
+      <section id="contact" class="contact">
   <div class="container">
     <h2>Let’s Create Something Amazing!</h2>
     <div class="contact-content">
       <div class="social-links">
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-        <a href="https://behance.com/sabirhussain9" target="_blank">Behance</a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sabirhussain0166@gmail.com" target="_blank">Gmail</a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
+        <a href="https://behance.com/sabirhussain9" target="_blank" aria-label="Behance">Behance</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sabirhussain0166@gmail.com" target="_blank" aria-label="Gmail">Gmail</a>
       </div>
       <form id="contact-form" class="contact-form">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message" required></textarea>
+        <input type="text" id="name" placeholder="Your Name" required aria-label="Your Name">
+        <input type="email" id="email" placeholder="Your Email" required aria-label="Your Email">
+        <textarea id="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
         <button type="submit">Send Message</button>
       </form>
     </div>
@@ -117,8 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= 30; i++) {
       portfolioItems.push({
         type: 'image',
-        src: `images/project${i}.jpg`, // Ensure your images are named project1.jpg, project2.jpg, etc.
-        caption: `Project ${i} - Graphic Design` // Customize captions as needed
+        src: `images/project${i}.jpg`,
+        caption: `Project ${i} - Graphic Design`
       });
     }
 
@@ -126,15 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= 5; i++) {
       portfolioItems.push({
         type: 'video',
-        src: `videos/project${i}.mp4`, // Ensure your videos are named project1.mp4, project2.mp4, etc.
-        caption: `Project ${i + 30} - Play Video` // Customize captions as needed
+        src: `videos/project${i}.mp4`,
+        caption: `Project ${i + 30} - Play Video`
       });
     }
 
     return portfolioItems;
   }
 
-  // Function to load content dynamically
+  // Function to load content dynamically with smooth transitions
   function loadPage(page) {
     const mainContent = document.getElementById('main-content');
 
@@ -143,15 +145,85 @@ document.addEventListener('DOMContentLoaded', () => {
     // Prevent unnecessary reload if the same page is already active
     if (mainContent.innerHTML.trim() === pages[page].trim()) return;
 
-    mainContent.innerHTML = pages[page];
-    updateActiveLink(page);
+    // Hide current content
+    mainContent.style.opacity = '0';
+    mainContent.style.transition = 'opacity 0.3s ease';
 
-    // Reinitialize modal functionality after loading new content
-    if (page === 'portfolio') {
-      generatePortfolioGrid();
-      initializeModal();
-    }
+    setTimeout(() => {
+      // Load new content
+      mainContent.innerHTML = pages[page];
+      mainContent.style.opacity = '1';
+
+      // Update active link in the navigation
+      updateActiveLink(page);
+
+      // Reinitialize functionality for specific pages
+      if (page === 'portfolio') {
+        generatePortfolioGrid();
+        initializeModal();
+      }
+
+      // Initialize form validation for the contact page
+      if (page === 'contact') {
+        initializeFormValidation();
+      }
+
+      // Animate new content items one by one (top to bottom)
+      animateContentItems();
+    }, 300); // Match the duration of the CSS transition
   }
+
+  // Function to animate content items one by one (top to bottom)
+  function animateContentItems() {
+    const contentItems = document.querySelectorAll('#main-content > *');
+    contentItems.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(-20px)'; // Start above
+      item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+
+      setTimeout(() => {
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)'; // Move down to final position
+      }, index * 200); // Staggered delay for each item
+    });
+  }
+
+  // Function to initialize animations on page load (top to bottom)
+  function initializePageAnimations() {
+    const navbar = document.querySelector('.navbar');
+    const logo = document.querySelector('.logo');
+    const navLinks = document.querySelectorAll('.nav-links li');
+
+    // Hide elements initially
+    logo.style.opacity = '0';
+    logo.style.transform = 'translateY(-20px)'; // Start above
+    navLinks.forEach(link => {
+      link.style.opacity = '0';
+      link.style.transform = 'translateY(-20px)'; // Start above
+    });
+
+    // Animate logo after a slight delay
+    setTimeout(() => {
+      logo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      logo.style.opacity = '1';
+      logo.style.transform = 'translateY(0)'; // Move down to final position
+    }, 200); // Delay for logo animation
+
+    // Animate nav links with staggered delay
+    navLinks.forEach((link, index) => {
+      setTimeout(() => {
+        link.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        link.style.opacity = '1';
+        link.style.transform = 'translateY(0)'; // Move down to final position
+      }, 400 + index * 200); // Staggered delay for each link
+    });
+
+    // Animate main content items (top to bottom)
+    animateContentItems();
+  }
+
+  // Initialize animations when the DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', initializePageAnimations);
 
   // Generate portfolio grid dynamically
   function generatePortfolioGrid() {
@@ -233,93 +305,173 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightArrow = document.querySelector(".right-arrow");
     const closeBtn = document.querySelector(".close");
 
-    // Get all grid items (images & videos)
     const gridItems = document.querySelectorAll(".grid-item");
     const mediaItems = [];
     const captions = [];
 
     gridItems.forEach((item, index) => {
-        const img = item.querySelector(".project-img");
-        const video = item.querySelector("video");
+      const img = item.querySelector(".project-img");
+      const video = item.querySelector("video");
 
-        if (img) {
-            mediaItems.push({ type: "image", src: img.src });
-            captions.push(item.querySelector(".overlay p").innerText);
-        } else if (video) {
-            mediaItems.push({ type: "video", src: video.querySelector("source").src });
-            captions.push(item.querySelector(".overlay p").innerText);
-        }
+      if (img) {
+        mediaItems.push({ type: "image", src: img.src });
+        captions.push(item.querySelector(".overlay p").innerText);
+      } else if (video) {
+        mediaItems.push({ type: "video", src: video.querySelector("source").src });
+        captions.push(item.querySelector(".overlay p").innerText);
+      }
     });
 
     let currentIndex = 0;
+    let scale = 1; // Initial zoom scale
+    const zoomLevels = [1, 1.5]; // Allowed zoom levels: 1x, 1.5x
+    let isDragging = false;
+    let startX, startY, translateX = 0, translateY = 0;
 
-    // Function to open modal
+    // Function to open modal at the user's current viewport position
     function openModal(index) {
-        modal.style.display = "block";
-        currentIndex = index;
+      modal.style.display = "block";
+      currentIndex = index;
+      scale = 1; // Reset zoom scale
+      translateX = 0; // Reset translate X
+      translateY = 0; // Reset translate Y
 
-        if (mediaItems[index].type === "image") {
-            modalImg.src = mediaItems[index].src;
-            modalImg.style.display = "block";
-            modalVideo.style.display = "none";
-        } else {
-            modalVideo.src = mediaItems[index].src;
-            modalVideo.style.display = "block";
-            modalImg.style.display = "none";
-        }
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const viewportHeight = window.innerHeight;
 
-        captionText.innerHTML = captions[index];
+      modal.style.top = `${scrollTop}px`;
+      modal.style.height = `${viewportHeight}px`;
+
+      if (mediaItems[index].type === "image") {
+        modalImg.src = mediaItems[index].src;
+        modalImg.style.display = "block";
+        modalVideo.style.display = "none";
+        modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`; // Apply initial scale and translation
+      } else {
+        modalVideo.src = mediaItems[index].src;
+        modalVideo.style.display = "block";
+        modalImg.style.display = "none";
+      }
+
+      captionText.innerHTML = captions[index];
+      document.body.style.overflow = 'hidden'; // Disable page scroll when modal is open
     }
 
-    // Add click event to open modal
     gridItems.forEach((item, index) => {
-        const img = item.querySelector(".project-img");
-        const video = item.querySelector("video");
+      const img = item.querySelector(".project-img");
+      const video = item.querySelector("video");
 
-        if (img) img.addEventListener("click", () => openModal(index));
-        if (video) video.addEventListener("click", () => openModal(index));
+      if (img) img.addEventListener("click", () => openModal(index));
+      if (video) video.addEventListener("click", () => openModal(index));
     });
 
-    // Left arrow navigation
     leftArrow.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-        openModal(currentIndex);
+      currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+      openModal(currentIndex);
     });
 
-    // Right arrow navigation
     rightArrow.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % mediaItems.length;
-        openModal(currentIndex);
+      currentIndex = (currentIndex + 1) % mediaItems.length;
+      openModal(currentIndex);
     });
 
-    // Close modal on close button
     closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+      modalVideo.pause();
+      document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
+    });
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
         modal.style.display = "none";
         modalVideo.pause();
+        document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
+      }
     });
 
-    // Close modal when clicking outside content
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-            modalVideo.pause();
-        }
-    });
-
-    // Keyboard navigation support
     document.addEventListener("keydown", (event) => {
-        if (modal.style.display === "block") {
-            if (event.key === "Escape") {
-                modal.style.display = "none";
-                modalVideo.pause();
-            } else if (event.key === "ArrowLeft") {
-                currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-                openModal(currentIndex);
-            } else if (event.key === "ArrowRight") {
-                currentIndex = (currentIndex + 1) % mediaItems.length;
-                openModal(currentIndex);
-            }
+      if (modal.style.display === "block") {
+        if (event.key === "Escape") {
+          modal.style.display = "none";
+          modalVideo.pause();
+          document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
+        } else if (event.key === "ArrowLeft") {
+          currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+          openModal(currentIndex);
+        } else if (event.key === "ArrowRight") {
+          currentIndex = (currentIndex + 1) % mediaItems.length;
+          openModal(currentIndex);
         }
+      }
+    });
+
+    modalImg.addEventListener("wheel", (event) => {
+      if (mediaItems[currentIndex].type === "image") {
+        event.preventDefault();
+
+        const imageRect = modalImg.getBoundingClientRect();
+        const offsetX = event.clientX - imageRect.left;
+        const offsetY = event.clientY - imageRect.top;
+
+        const zoomDirection = event.deltaY < 0 ? 1 : -1;
+        const currentZoomIndex = zoomLevels.indexOf(scale);
+        let newZoomIndex = currentZoomIndex + zoomDirection;
+
+        if (newZoomIndex < 0) newZoomIndex = 0;
+        if (newZoomIndex >= zoomLevels.length) newZoomIndex = zoomLevels.length - 1;
+
+        scale = zoomLevels[newZoomIndex];
+
+        const transformOriginX = (offsetX / modalImg.offsetWidth) * 100;
+        const transformOriginY = (offsetY / modalImg.offsetHeight) * 100;
+
+        modalImg.style.transition = "transform 0.3s ease";
+        modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        modalImg.style.transformOrigin = `${transformOriginX}% ${transformOriginY}%`;
+      }
+    });
+
+    // Drag functionality for zoomed-in images with persistent drag after mouse leave
+    modalImg.addEventListener("mousedown", (event) => {
+      if (scale > 1 && event.button === 0) {
+        isDragging = true;
+        startX = event.clientX - translateX;
+        startY = event.clientY - translateY;
+        modalImg.style.cursor = "grabbing";
+      }
+    });
+
+    modalImg.addEventListener("mousemove", (event) => {
+      if (isDragging) {
+        event.preventDefault();
+        translateX = event.clientX - startX;
+        translateY = event.clientY - startY;
+        modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+      }
+    });
+
+    modalImg.addEventListener("mouseup", () => {
+      if (isDragging) {
+        isDragging = false;
+        modalImg.style.cursor = "grab";
+      }
+    });
+
+    modalImg.addEventListener("mouseleave", () => {
+      if (isDragging) {
+        isDragging = false;
+        modalImg.style.cursor = "grab";
+      }
+    });
+
+    modalImg.addEventListener("click", () => {
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      modalImg.style.transition = "transform 0.3s ease";
+      modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
     });
   }
+
+
 });
