@@ -500,36 +500,39 @@ p {
 .portfolio {
   position: relative;
   width: 100%; /* Full viewport width */
-  min-height: calc(100vh - 100px); /* Ensures it always fits screen */
-  background-color: #1a1a1a; /* Dark background */
+  min-height: 100vh; /* Ensures it always fits screen */
+  background: linear-gradient(135deg, #1a1a1a, #000000); /* Gradient dark background */
   color: #ffffff; /* Light text for contrast */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px auto; /* Pushes portfolio below navbar */
+  padding: 20px; /* Adds some padding around the grid */
+  overflow: hidden; /* Prevents overflow from animations */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive layout */
-  gap: 12px;
-  max-width: 12300px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive layout with larger items */
+  gap: 14px; /* Increased gap for better spacing */
+  max-width: 1400px; /* Slightly larger max-width */
   width: 100%;
-  padding: 45px;
+  padding: 20px;
 }
 
 .grid-item {
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
   aspect-ratio: 1 / 1; /* Ensures square aspect ratio */
+  background: #2a2a2a; /* Fallback background for items */
 }
 
 .grid-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+  transform: translateY(-10px); /* More pronounced lift on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
+  filter: brightness(1.1); /* Slight brightness increase */
 }
 
 .project-img,
@@ -537,8 +540,13 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensures media fills the container */
-  border-radius: 8px;
+  border-radius: 7px; /* Matches grid-item border-radius */
   transition: transform 0.3s ease;
+}
+
+.grid-item:hover .project-img,
+.grid-item:hover video {
+  transform: scale(1.04); /* Slight zoom effect on hover */
 }
 
 .overlay {
@@ -546,24 +554,53 @@ p {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark overlay */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)); /* Gradient overlay */
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(100%); /* Starts hidden below */
 }
 
 .grid-item:hover .overlay {
   opacity: 1;
+  transform: translateY(0); /* Slides up on hover */
 }
 
 .overlay p {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px; /* Larger font size */
   font-weight: bold;
-  color: #ff4757; /* Accent color for text */
+  color: #ff6b6b; /* Vibrant accent color */
+  text-transform: uppercase; /* Uppercase text for a modern look */
+  letter-spacing: 1px; /* Adds spacing between letters */
 }
+
+/* Optional: Add a subtle animation to the grid items on page load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid-item {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Delay animations for a staggered effect */
+.grid-item:nth-child(1) { animation-delay: 0.1s; }
+.grid-item:nth-child(2) { animation-delay: 0.2s; }
+.grid-item:nth-child(3) { animation-delay: 0.3s; }
+.grid-item:nth-child(4) { animation-delay: 0.4s; }
+.grid-item:nth-child(5) { animation-delay: 0.5s; }
+.grid-item:nth-child(6) { animation-delay: 0.6s; }
 
 /* Fullscreen Modal */
 .modal {
@@ -637,6 +674,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1050; /* Ensure it stays above other elements */
 }
 
 .nav-arrow:hover {
@@ -659,7 +697,7 @@ p {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .portfolio {
     padding: 0 10px;
     }
@@ -675,7 +713,7 @@ p {
    }
 
   .modal{
-    padding-top: 15%;
+    padding-top: 5%;
   }
   .modal-content {
     max-width: 95%;
@@ -709,7 +747,7 @@ p {
   }
 
   .modal{
-    padding-top: 30%;
+    padding-top: 20%;
   }
 
   .modal-content {
