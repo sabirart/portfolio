@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <h3>Hi, I'm Sabir Hussain,</h3>
         <p style="text-align: left;">A passionate UI/UX and Graphic Designer dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. Let’s create something extraordinary together!</p>
         <div class="skills">
-          <h3>Skills & Tools</h3>
+          <h3 style="text-align: center";>Skills & Tools</h3>
           <ul>
             <li><i class="fab fa-figma"></i> Figma</li>
             <li>
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <img src="icons/adobe-ae.svg" alt="adobe-ae" class="custom-icon"> Adobe After Effects
 </li>
 <li>
-              <img src="icons/adobe-pr.svg" alt="adobe-pr" class="custom-icon"> Adobe Premiere Pro
+              <img src="icons/adobe-pr.svg" alt="adobe-pr" class="custom-icon"> Adobe Premiere
 </li>
              <li><i class="fas fa-pen-nib"></i> CorelDRAW</li>
 <li>
