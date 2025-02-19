@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="container">
           <div class="hero-content">
             <h1 class="hero-title">
-              <span class="text-glow">Welcome to my Portfolio</span> <br>
-              <span class="text-glow">I'm Sabir .H</span>
-            </h1>
-            <p class="hero-subtitle">You can Check my Portfolio or Contact Me</p>
+              <span class="text-glow">Sabir Hussain</span> <br>
+              <span class="text-glow">Professional UI/UX & Graphic Designer</span>
+            </h1><br>
+            <p class="hero-subtitle">Welcome to My Portfolio Website <br> I design modern, minimalist interfaces that engage, inspire, and convert.</p>
           </div>
           <div class="hero-background"></div>
         </div>
