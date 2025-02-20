@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <a href="tel:+923237658289" aria-label="Phone">
       <i class="fas fa-phone-alt"></i>
     </a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sabirhussain0166@gmail.com" target="_blank" aria-label="Gmail">
+    <a href="mailto:sabirhussain0166@gmail.com?subject=Inquiry&body=Hello%20Sabir," aria-label="Gmail">
       <i class="fas fa-envelope"></i>
     </a>
 </div>
