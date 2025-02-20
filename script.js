@@ -137,6 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!pages[page]) return;
     if (mainContent.innerHTML.trim() === pages[page].trim()) return;
 
+    // Reset body overflow to auto when loading a new page
+    document.body.style.overflow = 'auto';
+
     // Hide spinner only for Contact page
     if (page === 'contact') {
         loadingSpinner.style.display = 'none';
