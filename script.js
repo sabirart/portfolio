@@ -1,106 +1,106 @@
 document.addEventListener('DOMContentLoaded',()=>{const pages={home:`
-  <!-- Advanced Hero Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="text-glow">Sabir Hussain</span> <br>
-          <span class="text-glow">Professional UI/UX & Graphic Designer</span>
-        </h1><br>
-        <p class="hero-subtitle">Welcome to My Portfolio Website <br> I design modern, minimalist interfaces that engage, inspire, and convert.</p>
+      <!-- Advanced Hero Section -->
+      <section id="home" class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              <span class="text-glow">Sabir Hussain</span> <br>
+              <span class="text-glow">Professional UI/UX & Graphic Designer</span>
+            </h1><br>
+            <p class="hero-subtitle">Welcome to My Portfolio Website <br> I design modern, minimalist interfaces that engage, inspire, and convert.</p>
+          </div>
+          <div class="hero-background"></div>
+        </div>
+      </section>
+    `,about:`
+      <section id="about" class="about">
+  <div class="container">
+    <div class="profile-image">
+      <img src="images/profile.png" alt="Profile Image" loading="lazy">
+    </div>
+    <div class="about-content">
+      <div class="bio">
+        <h3>Hi, I'm Sabir Hussain,</h3>
+        <p style="text-align: left;">A passionate UI/UX and Graphic Designer dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. <br> Let’s create something extraordinary together!</p>
+        <div class="skills">
+          <h3 style="text-align: center";>Skills & Tools</h3>
+          <ul>
+            <li><i class="fab fa-figma"></i> Figma</li>
+            <li>
+              <img src="icons/adobe-xd.svg" alt="adobe" class="custom-icon"> Adobe XD
+            </li>
+            <li><i class="fab fa-sketch"></i> Sketch</li>
+ <li>
+              <img src="icons/adobe-ps.svg" alt="adobe-ps" class="custom-icon"> Adobe Photoshop
+ </li>
+<li>
+              <img src="icons/adobe-ai.svg" alt="adobe-ai" class="custom-icon"> Adobe Illustrator
+ </li>
+<li>
+              <img src="icons/adobe-ae.svg" alt="adobe-ae" class="custom-icon"> Adobe After Effects
+</li>
+<li>
+              <img src="icons/adobe-pr.svg" alt="adobe-pr" class="custom-icon"> Adobe Premiere
+</li>
+             <li><i class="fas fa-pen-nib"></i> CorelDRAW</li>
+<li>
+              <img src="icons/canva.svg" alt="canva" class="custom-icon"> Canva
+ </li>
+             <li><i class="fas fa-cube"></i> Blender (3D Design)</li>
+            <li><i class="fab fa-html5"></i> HTML/CSS</li>
+            <li><i class="fab fa-js"></i> JavaScript</li>
+            <li><i class="fab fa-wordpress"></i> WordPress</li>
+            <li><i class="fas fa-pencil-ruler"></i> UI/UX Design</li>
+            <li><i class="fas fa-palette"></i> Brand Identity Design</li>
+            <li><i class="fas fa-shapes"></i> Prototyping</li>
+            <li><i class="fas fa-film"></i> Motion Graphics</li>
+            <li><i class="fas fa-text-height"></i> Typography</li>
+          </ul>
+        </div>
       </div>
-      <div class="hero-background"></div>
-    </div>
-  </section>
-`,about:`
-  <section id="about" class="about">
-<div class="container">
-<div class="profile-image">
-  <img src="images/profile.png" alt="Profile Image" loading="lazy">
-</div>
-<div class="about-content">
-  <div class="bio">
-    <h3>Hi, I'm Sabir Hussain,</h3>
-    <p style="text-align: left;">A passionate UI/UX and Graphic Designer dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. <br> Let’s create something extraordinary together!</p>
-    <div class="skills">
-      <h3 style="text-align: center";>Skills & Tools</h3>
-      <ul>
-        <li><i class="fab fa-figma"></i> Figma</li>
-        <li>
-          <img src="icons/adobe-xd.svg" alt="adobe" class="custom-icon"> Adobe XD
-        </li>
-        <li><i class="fab fa-sketch"></i> Sketch</li>
-<li>
-          <img src="icons/adobe-ps.svg" alt="adobe-ps" class="custom-icon"> Adobe Photoshop
-</li>
-<li>
-          <img src="icons/adobe-ai.svg" alt="adobe-ai" class="custom-icon"> Adobe Illustrator
-</li>
-<li>
-          <img src="icons/adobe-ae.svg" alt="adobe-ae" class="custom-icon"> Adobe After Effects
-</li>
-<li>
-          <img src="icons/adobe-pr.svg" alt="adobe-pr" class="custom-icon"> Adobe Premiere
-</li>
-         <li><i class="fas fa-pen-nib"></i> CorelDRAW</li>
-<li>
-          <img src="icons/canva.svg" alt="canva" class="custom-icon"> Canva
-</li>
-         <li><i class="fas fa-cube"></i> Blender (3D Design)</li>
-        <li><i class="fab fa-html5"></i> HTML/CSS</li>
-        <li><i class="fab fa-js"></i> JavaScript</li>
-        <li><i class="fab fa-wordpress"></i> WordPress</li>
-        <li><i class="fas fa-pencil-ruler"></i> UI/UX Design</li>
-        <li><i class="fas fa-palette"></i> Brand Identity Design</li>
-        <li><i class="fas fa-shapes"></i> Prototyping</li>
-        <li><i class="fas fa-film"></i> Motion Graphics</li>
-        <li><i class="fas fa-text-height"></i> Typography</li>
-      </ul>
     </div>
   </div>
-</div>
-</div>
 </section>
-`,portfolio:`
-  <section id="portfolio" class="portfolio">
-    <div class="grid" id="portfolio-grid">
-      <!-- Portfolio items will be dynamically inserted here -->
+    `,portfolio:`
+      <section id="portfolio" class="portfolio">
+        <div class="grid" id="portfolio-grid">
+          <!-- Portfolio items will be dynamically inserted here -->
+        </div>
+        <!-- Fullscreen Modal -->
+        <div id="full-screen-modal" class="modal">
+          <span class="close">&times;</span>
+          <span class="nav-arrow left-arrow">&#10094;</span>
+          <span class="nav-arrow right-arrow">&#10095;</span>
+          <img class="modal-content" id="modal-img">
+          <video class="modal-content" id="modal-video" controls></video>
+          <div id="caption"></div>
+        </div>
+      </section>
+    `,contact:`
+      <section id="contact" class="contact">
+  <div class="container">
+    <h2>Let’s Create <br> Something Amazing!</h2>
+    <div class="contact-content">
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
+        <a href="https://behance.com/sabirhussain9" target="_blank" aria-label="Behance">Behance</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sabirhussain0166@gmail.com" target="_blank" aria-label="Gmail">Gmail</a>
+      </div>
+      <form id="contact-form" class="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required aria-label="Your Name">
+        <input type="email" id="email" placeholder="Your Email" required aria-label="Your Email">
+        <textarea id="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
-    <!-- Fullscreen Modal -->
-    <div id="full-screen-modal" class="modal">
-      <span class="close">&times;</span>
-      <span class="nav-arrow left-arrow">&#10094;</span>
-      <span class="nav-arrow right-arrow">&#10095;</span>
-      <img class="modal-content" id="modal-img">
-      <video class="modal-content" id="modal-video" controls></video>
-      <div id="caption"></div>
-    </div>
-  </section>
-`,contact:`
-  <section id="contact" class="contact">
-<div class="container">
-<h2>Let’s Create <br> Something Amazing!</h2>
-<div class="contact-content">
-  <div class="social-links">
-    <a href="https://instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
-    <a href="https://behance.com/sabirhussain9" target="_blank" aria-label="Behance">Behance</a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sabirhussain0166@gmail.com" target="_blank" aria-label="Gmail">Gmail</a>
   </div>
-  <form id="contact-form" class="contact-form">
-    <input type="text" id="name" placeholder="Your Name" required aria-label="Your Name">
-    <input type="email" id="email" placeholder="Your Email" required aria-label="Your Email">
-    <textarea id="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</div>
-</div>
 </section>
-`};function generatePortfolioItems(){const portfolioItems=[];for(let i=1;i<=30;i++){portfolioItems.push({type:'image',src:`images/project${i}.jpg`,caption:`Project ${i} - Graphic Design`})}
+    `};function generatePortfolioItems(){const portfolioItems=[];for(let i=1;i<=30;i++){portfolioItems.push({type:'image',src:`images/project${i}.jpg`,caption:`Project ${i} - Graphic Design`})}
 for(let i=1;i<=5;i++){portfolioItems.push({type:'video',src:`videos/project${i}.mp4`,caption:`Project ${i + 30} - Play Video`})}
 return portfolioItems}
-function loadPage(page){const mainContent=document.getElementById('main-content');const loadingSpinner=document.getElementById('loading-spinner');if(!pages[page])return;if(mainContent.innerHTML.trim()===pages[page].trim())return;loadingSpinner.style.display='block';mainContent.classList.add('page-transition');setTimeout(()=>{mainContent.innerHTML=pages[page];window.scrollTo(0,0);mainContent.classList.remove('page-transition');mainContent.classList.add('page-enter');updateActiveLink(page);if(page==='portfolio'){generatePortfolioGrid();initializeModal()}
+function loadPage(page){const mainContent=document.getElementById('main-content');const loadingSpinner=document.getElementById('loading-spinner');if(!pages[page])return;if(mainContent.innerHTML.trim()===pages[page].trim())return;loadingSpinner.style.display='block';console.log("Loading spinner started...");mainContent.classList.add('page-transition');setTimeout(()=>{mainContent.innerHTML=pages[page];window.scrollTo(0,0);mainContent.classList.remove('page-transition');mainContent.classList.add('page-enter');updateActiveLink(page);if(page==='portfolio'){generatePortfolioGrid();initializeModal()}
 if(page==='contact'){initializeFormValidation()}
-animateContentItems();setTimeout(()=>{loadingSpinner.style.display='none';mainContent.classList.remove('page-enter')},300)},300)}
+animateContentItems();setTimeout(()=>{loadingSpinner.style.display='none';console.log("Loading spinner stopped!");mainContent.classList.remove('page-enter')},300)},300)}
 function animateContentItems(){const contentItems=document.querySelectorAll('#main-content > *');contentItems.forEach((item,index)=>{item.style.opacity='0';item.style.transform='translateY(-20px)';item.style.transition='opacity 0.8s ease, transform 0.8s ease';setTimeout(()=>{item.style.opacity='1';item.style.transform='translateY(0)'},index*200)})}
 function initializePageAnimations(){const navbar=document.querySelector('.navbar');const logo=document.querySelector('.logo');const navLinks=document.querySelectorAll('.nav-links li');logo.style.opacity='0';logo.style.transform='translateY(-20px)';navLinks.forEach(link=>{link.style.opacity='0';link.style.transform='translateY(-20px)'});setTimeout(()=>{logo.style.transition='opacity 0.8s ease, transform 0.8s ease';logo.style.opacity='1';logo.style.transform='translateY(0)'},200);navLinks.forEach((link,index)=>{setTimeout(()=>{link.style.transition='opacity 0.8s ease, transform 0.8s ease';link.style.opacity='1';link.style.transform='translateY(0)'},400+index*200)});animateContentItems()}
 document.addEventListener('DOMContentLoaded',initializePageAnimations);function generatePortfolioGrid(){const grid=document.getElementById('portfolio-grid');grid.innerHTML='';const portfolioItems=generatePortfolioItems();portfolioItems.forEach((item,index)=>{const gridItem=document.createElement('div');gridItem.classList.add('grid-item');if(item.type==='image'){const img=document.createElement('img');img.src=item.src;img.alt=`Project ${index + 1}`;img.loading='lazy';img.classList.add('project-img');gridItem.appendChild(img)}else if(item.type==='video'){const video=document.createElement('video');video.controls=!0;video.preload='metadata';const source=document.createElement('source');source.src=item.src;source.type='video/mp4';video.appendChild(source);gridItem.appendChild(video);gridItem.classList.add('video-item')}
