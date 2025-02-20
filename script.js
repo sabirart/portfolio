@@ -88,10 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
     <h2>Let’s Create <br> Something Amazing!</h2>
     <div class="contact-content">
       <div class="social-links">
-        <a href="https://instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
-        <a href="https://behance.com/sabirhussain9" target="_blank" aria-label="Behance">Behance</a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sabirhussain0166@gmail.com" target="_blank" aria-label="Gmail">Gmail</a>
-      </div>
+    <a href="https://wa.me/923237658289" target="_blank" aria-label="Whatsapp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+923237658289" aria-label="Phone">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sabirhussain0166@gmail.com" target="_blank" aria-label="Gmail">
+      <i class="fas fa-envelope"></i>
+    </a>
+</div>
+      <p style="text-align: center; padding-bottom: 20px">or</p>
       <form id="contact-form" class="contact-form">
         <input type="text" id="name" placeholder="Your Name" required aria-label="Your Name">
         <input type="email" id="email" placeholder="Your Email" required aria-label="Your Email">
