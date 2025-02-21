@@ -91,20 +91,49 @@ document.addEventListener('DOMContentLoaded', () => {
     <a href="https://wa.me/923237658289" target="_blank" aria-label="Whatsapp">
       <i class="fab fa-whatsapp"></i>
     </a>
-    <a href="tel:+923237658289" aria-label="Phone">
-      <i class="fas fa-phone-alt"></i>
-    </a>
-    <a href="mailto:sabirhussain0166@gmail.com?subject=Inquiry&body=Hello%20Sabir," aria-label="Gmail">
-      <i class="fas fa-envelope"></i>
-    </a>
+    <a href="tel:+923237658289" onclick="handlePhoneClick(event)" aria-label="Phone">
+    <i class="fas fa-phone-alt"></i>
+</a>
+
+<!-- Pop-up Box (Hidden by Default) -->
+<div id="phonePopup" class="popup" style="display: none;" onclick="closePopup(event)">
+    <div class="popup-content" onclick="event.stopPropagation();">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p>CONTACT NUMBER</p>
+        <h2>+92 323 7658289</h2>
+        <button onclick="copyPhoneNumber()">Copy Number</button>
+        <p id="copyMessage" style="display: none; color: green; margin-top: 10px;">Number copied!</p>
+    </div>
+</div>
+
+   <a href="https://mail.google.com/mail/?view=cm&to=sabirhussain0166@gmail.com&su=Inquiry&body=Hello%20Sabir," target="_blank" aria-label="Gmail">
+   <i class="fas fa-envelope"></i>
+</a>
+
 </div>
       <p style="text-align: center; padding-bottom: 20px">or</p>
-      <form id="contact-form" class="contact-form">
-        <input type="text" id="name" placeholder="Your Name" required aria-label="Your Name">
-        <input type="email" id="email" placeholder="Your Email" required aria-label="Your Email">
-        <textarea id="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+    <form id="contact-form" class="contact-form">
+  <div>
+    <input type="text" id="name" placeholder="Your Name" required aria-label="Your Name">
+    <span id="name-error" class="error-message"></span>
+  </div>
+  <div>
+    <input type="email" id="email" placeholder="Your Email" required aria-label="Your Email">
+    <span id="email-error" class="error-message"></span>
+  </div>
+  <div>
+    <textarea id="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+    <span id="message-error" class="error-message"></span>
+  </div>
+  <button type="submit">Send Message</button>
+</form>
+
+<!-- Pop-up (Hidden by Default) -->
+<div id="popup" class="popup" style="display: none;">
+  <div class="popup-content">
+    <p id="popup-message"></p>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -184,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }, 300);
 }
+
   // Function to animate content items one by one (top to bottom)
   function animateContentItems() {
     const contentItems = document.querySelectorAll('#main-content > *');
