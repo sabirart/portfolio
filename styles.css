@@ -235,6 +235,8 @@ p {
     flex-direction: row;
     align-items: center;
     padding: 10px;
+    padding-left: 30px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.8) 100%);
   }
 
   .logo {
@@ -393,6 +395,8 @@ p {
 
 /* Hero Title Styles */
 .hero-title {
+  margin-left: 40px;
+  padding-top: 70px;
   font-size: clamp(1.8rem, 4vw, 2.5rem);  /* Adjusted font size */
   font-weight: 800;
   text-transform: uppercase;
@@ -401,12 +405,12 @@ p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0px 4px 8px rgba(79, 156, 255, 0.3);
-  margin-bottom: 20px;
   animation: fadeInUp 1.5s ease-out;
 }
 
 /* Hero Subtitle Styles */
 .hero-subtitle {
+  margin-left: 40px !important;
   font-size: clamp(1rem, 3vw, 1.4rem);  /* Adjusted font size */
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 30px;
@@ -430,7 +434,8 @@ p {
 }
 
 /* Portfolio Button */
-button {
+.portfolio-btn {
+  margin-left: 40px;
   padding: 12px 25px;
   font-size: 1rem;
   font-weight: 600;
@@ -439,23 +444,50 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   font-family: 'Inter', sans-serif;
   width: auto;
   text-align: center;
   margin-right: 10px; /* 10px gap if needed */
+  position: relative;
+  overflow: hidden; /* Ensure the pseudo-element doesn't overflow */
 }
 
-button:hover {
+/* Glossy Shine Effect */
+.portfolio-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%; /* Start the shine outside the button */
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0)
+  );
+  transform: rotate(45deg);
+  transition: left 0.8s ease; /* Animate the left position */
+  opacity: 0; /* Hide by default */
+}
+
+.portfolio-btn:hover::before {
+  opacity: 1; /* Show the glossy effect on hover */
+  left: 100%; /* Move the shine across the button */
+}
+
+.portfolio-btn:hover {
   background: linear-gradient(135deg, #ff6b6b, #ff5252);
   transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 82, 82, 0.4); /* Add a shadow for depth */
 }
 
-button:focus-visible {
+.portfolio-btn:focus-visible {
   outline: 2px solid #ff6b6b;
 }
 
-button:active {
+.portfolio-btn:active {
   transform: translateY(0);
 }
 
@@ -466,12 +498,6 @@ button:active {
   align-items: center;  /* Center align the buttons */
   justify-content: flex-start;  /* Align buttons to the left */
   gap: 10px;  /* Set the gap between buttons */
-}
-
-/* Portfolio Button Specific Styling */
-button.portfolio-btn {
-  background: linear-gradient(135deg, #ff5252, #ff6b6b);
-  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 /* Optional Hero Background (if required) */
@@ -498,6 +524,10 @@ button.portfolio-btn {
   .hero .container {
     width: 95%;
   }
+
+  button {
+  margin-left: 10px;
+  }
 }
 
 /* Mobile Devices */
@@ -513,12 +543,16 @@ button.portfolio-btn {
   }
 
   .hero-title {
+    
+  margin-left: 10px;
     font-size: clamp(2rem, 5vw, 2.5rem);
   }
 
   .hero-subtitle {
+  margin-left: 10px !important;
     font-size: clamp(1rem, 3vw, 1.2rem);
   }
+
 }
 
 /* Small Mobiles */
@@ -544,8 +578,7 @@ button.portfolio-btn {
 /* Import FontAwesome for icons */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
-/* About Section */
-/* About Section */
+
 .about {
   padding: 6% 10px !important;
   background-color: #1a1a1a;
@@ -633,6 +666,10 @@ button.portfolio-btn {
 
 
 .skills {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
   max-width: 750px; /* Slightly wider for better content spacing */
   width: 100%;
   padding: 40px; /* Increased padding for a spacious feel */
@@ -662,25 +699,25 @@ button.portfolio-btn {
 .skills li {
   background-color: #333333;
   padding: 15px; /* Adjusted for equal height */
-  border-radius: 25px;
+  border-radius: 5px;
   font-size: 16px;
   color: #ffffff;
   transition: background-color 0.3s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
-  justify-content: center; /* Centered content */
-  gap: 10px;
+  justify-content: flex-start; /* Align content to the left */
+  gap: 10px; /* Consistent gap between icon and text */
   width: 100%;
   height: 50px; /* Fixed height to ensure uniform size */
-  text-align: center;
+  text-align: left; /* Align text to the left */
 }
 
 .skills li i {
   color: #ff4757;
   transition: color 0.3s ease;
+  min-width: 24px; /* Ensure all icons have the same width */
+  text-align: center; /* Center the icon within its space */
 }
-
-
 
 .skills li:hover {
   background-color: #ff4757;
@@ -688,16 +725,9 @@ button.portfolio-btn {
   transform: scale(1.05);
 }
 
-.skills li i {
-  color: #ff4757;
-  transition: color 0.3s ease;
-}
-
 .skills li:hover i {
   color: #ffffff;
 }
-
-/* Custom Icon Section */
 .custom-icon {
   width: 24px;
   height: 24px;
@@ -710,26 +740,37 @@ button.portfolio-btn {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg);
 }
 
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
+  .about {
+    padding: 20% 10px 6% 10px !important; /* Increased top padding for mobile */
+  }
+
   .container {
     flex-direction: column;
-    gap: 20px;
+    gap: 10px; /* Reduced gap between image and text */
   }
 
   .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 200px; /* Smaller size for mobile */
+    height: 200px;
+    margin-top: 12%; /* Adjusted for mobile */
     border-radius: 50%;
+    margin-bottom: 10px; /* Added margin to create space below the image */
   }
 
   .bio h3 {
-    font-size: 24px;
+    font-size: 28px; /* Smaller font size for mobile */
+    margin-top: 10px; /* Added margin to create space above the heading */
   }
 
   .bio p {
-    font-size: 16px;
-    padding-left: 0px;
+    font-size: 16px; /* Smaller font size for mobile */
+    line-height: 1.6; /* Adjusted line height */
+    padding: 0 10px; /* Added padding for better readability */
+    margin-top: 10px; /* Added margin to create space above the paragraph */
   }
+
   .skills {
     padding: 10px;
     margin: 20px auto;
@@ -740,7 +781,7 @@ button.portfolio-btn {
   }
 
   .skills ul {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* Three equal columns */
   }
 
   .skills li {
@@ -749,44 +790,39 @@ button.portfolio-btn {
   }
 }
 
-
 @media (max-width: 480px) {
   .about {
-    padding: 30px 15px 100px 15px;
+    padding: 25% 10px 6% 10px !important; /* Further increased top padding for very small screens */
   }
 
   .profile-image {
-    width: 140px;
-    height: 140px;
+    width: 150px; /* Even smaller for very small screens */
+    height: 150px;
+    margin-top: 15%; /* Adjusted for very small screens */
+    margin-bottom: 10px; /* Added margin to create space below the image */
+  }
+
+  .bio h3 {
+    font-size: 24px; /* Adjusted font size */
+    margin-top: 10px; /* Added margin to create space above the heading */
   }
 
   .bio p {
-    font-size: 14px;
-  }
-
-  .skills {
-    width: 95%;
-    padding: 8px;
-  }
-
-  .skills h3 {
-    font-size: 20px;
+    font-size: 14px; /* Smaller font size for very small screens */
+    line-height: 1.5; /* Adjusted line height */
+    margin-top: 10px; /* Added margin to create space above the paragraph */
   }
 
   .skills ul {
-    grid-template-columns: repeat(2, 1fr); /* Adapts to 2 columns on small screens */
-    gap: 8px;
-  }
-
-  .skills li {
-    font-size: 13px;
-    padding: 10px;
-    border-radius: 20px;
+    grid-template-columns: repeat(2, 1fr); /* Three equal columns */
   }
 }
-
 /* Portfolio Section - Full Screen */
 .portfolio {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
   padding-top: 6% !important;
   position: relative;
   width: 100%; /* Full viewport width */
@@ -895,6 +931,10 @@ button.portfolio-btn {
 /* Fullscreen Modal Appearing Below Navbar */
 /* MODAL BACKDROP */
 .modal {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
   display: none;
   position: fixed;
   z-index: 9999; /* Higher priority */
@@ -989,6 +1029,12 @@ button.portfolio-btn {
 }
 /* Responsive Design */
 @media (max-width: 1200px) {
+  .portfolio{
+    padding-top: 16% !important;
+  }
+  .modal{
+    padding-top: 45% !important;
+  }
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
@@ -1210,7 +1256,10 @@ button.portfolio-btn {
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact{
-    padding: 20px 4px;
+    padding: 20px 19px;
+  }
+  .contact h2{
+    font-size: 2rem; /* Increased font size */
   }
 
   .contact-content {
@@ -1456,3 +1505,4 @@ footer .social-links a:hover i {
     padding: 4px 18px;
   }
 }
+
