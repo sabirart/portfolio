@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Content for each section
   const pages = {
     home: `
-      <!-- Advanced Hero Section -->
       <section id="home" class="hero">
         <div class="container">
           <div class="hero-content">
@@ -11,23 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="text-glow">Professional UI/UX & Graphic Designer</span>
             </h1><br>
             <p class="hero-subtitle">Welcome to My Portfolio Website <br> I design modern, minimalist interfaces that engage, inspire, and convert.</p>
-          </div>
+              <a href="https://sabirportfolio.github.io/.com/#portfolio"><button type="button" class="portfolio-btn" ">Open Portfolio</button></a>
+            </div>
           <div class="hero-background"></div>
         </div>
       </section>
     `,
     about: `
-      <section id="about" class="about">
+   <section id="about" class="about">
   <div class="container">
     <div class="profile-image">
-      <img src="images/profile.png" alt="Profile Image" loading="lazy">
+      <img src="images/profile.jpg" alt="Sabir Hussain - UI/UX Designer" loading="lazy">
     </div>
     <div class="about-content">
       <div class="bio">
-        <h3>Hi, I'm Sabir Hussain,</h3>
-        <p style="text-align: left;">A passionate UI/UX and Graphic Designer dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. <br> Let’s create something extraordinary together!</p>
+        <h3>Hi, I'm <span class="highlight">Sabir Hussain</span>,</h3>
+        <p>A passionate <span class="highlight">UI/UX</span> and <span class="highlight">Graphic Designer</span> dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. <br> Let’s create something extraordinary together!</p>
         <div class="skills">
-          <h3 style="text-align: center";>Skills & Tools</h3>
+          <h3 style="text-align: center;">Skills & Tools</h3>
           <ul>
             <li><i class="fab fa-figma"></i> Figma</li>
             <li>
