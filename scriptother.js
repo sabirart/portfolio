@@ -128,3 +128,24 @@ function copyPhoneNumber() {
 }
 
 
+//ensure the open portfolio when clicked on the home ctr button
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const portfolioButton = document.querySelector(".portfolio-btn");
+
+    if (portfolioButton) {
+      portfolioButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default link behavior
+        const portfolioSection = document.getElementById("portfolio");
+
+        if (portfolioSection) {
+          portfolioSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the section
+        } else {
+          window.location.href = "https://sabirportfolio.github.io/.com/#portfolio"; // Fallback to URL
+        }
+      });
+    }
+  });
+
+
+
