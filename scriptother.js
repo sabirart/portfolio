@@ -129,32 +129,33 @@ function copyPhoneNumber() {
 
 
 //ensure the open portfolio when clicked on the home ctr button
+ document.addEventListener('DOMContentLoaded', () => {
+      // Function to scroll to the portfolio section
+      function scrollToPortfolio() {
+        const portfolioSection = document.getElementById('portfolio');
 
-  document.addEventListener('DOMContentLoaded', () => {
-  // Function to scroll to the portfolio section
-  function scrollToPortfolio() {
-    const portfolioSection = document.getElementById('portfolio');
+        if (portfolioSection) {
+          // Smooth scroll to the portfolio section
+          portfolioSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          console.error('Portfolio section not found!');
+        }
+      }
 
-    if (portfolioSection) {
-      // Smooth scroll to the portfolio section
-      portfolioSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      console.error('Portfolio section not found!');
-    }
-  }
+      // Handle navigation to the portfolio section
+      const portfolioLink = document.getElementById('portfolio-link');
+      if (portfolioLink) {
+        portfolioLink.addEventListener('click', (event) => {
+          event.preventDefault(); // Prevent default link behavior
+          history.pushState(null, '', '#portfolio'); // Update the URL
+          scrollToPortfolio(); // Scroll to the portfolio section
+        });
+      }
 
-  // Check for the #portfolio hash on page load
-  if (window.location.hash === '#portfolio') {
-    scrollToPortfolio();
-  }
-
-  // Handle navigation to the portfolio section
-  const portfolioLink = document.getElementById('portfolio-link');
-  if (portfolioLink) {
-    portfolioLink.addEventListener('click', (event) => {
-      event.preventDefault(); // Prevent default link behavior
-      history.pushState(null, '', '#portfolio'); // Update the URL
-      scrollToPortfolio(); // Scroll to the portfolio section
+      // Check for the #portfolio hash on page load
+      if (window.location.hash === '#portfolio') {
+        scrollToPortfolio();
+      }
     });
   }
 });
