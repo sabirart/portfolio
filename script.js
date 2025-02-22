@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="hero-subtitle">Welcome to My Portfolio Website <br> I design modern, minimalist interfaces that engage, inspire, and convert.</p>
 <a href="https://sabirportfolio.github.io/.com/#portfolio">
   <button type="button" class="portfolio-btn">Open Portfolio</button>
-</a>            </div>
+</a>           </div>
           <div class="hero-background"></div>
         </div>
       </section>
