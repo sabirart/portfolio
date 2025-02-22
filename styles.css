@@ -543,14 +543,17 @@ p {
   }
 
   .hero-title {
-    
-  margin-left: 10px;
-    font-size: clamp(2rem, 5vw, 2.5rem);
+    padding-top: 0px !important;
+    margin-left: 10px;
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
   }
 
   .hero-subtitle {
   margin-left: 10px !important;
     font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+  .portfolio-btn{
+    margin-left: 15px;
   }
 
 }
@@ -564,10 +567,6 @@ p {
 
   .hero .container {
     width: 100%;
-  }
-
-  .hero-title {
-    font-size: clamp(1.8rem, 4.5vw, 2.2rem);
   }
 
   .hero-subtitle {
@@ -623,6 +622,7 @@ p {
   font-size: 44px;
   color: #ff4757;
   margin-bottom: 20px;
+  padding-top: 20px;
 }
 
 .bio h3 .highlight {
@@ -670,8 +670,9 @@ p {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Standard syntax */
-  max-width: 750px; /* Slightly wider for better content spacing */
+  max-width: 800px; /* Slightly wider for better content spacing */
   width: 100%;
+  padding-top: 10px !important;
   padding: 40px; /* Increased padding for a spacious feel */
   background: #1e1e1e; /* Dark, sophisticated background */
   border-radius: 16px; /* Rounded corners for a premium look */
@@ -682,7 +683,7 @@ p {
 
 .skills h3 {
   font-size: 34px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #ff4757;
   text-align: left;
 }
@@ -1260,6 +1261,7 @@ p {
   }
   .contact h2{
     font-size: 2rem; /* Increased font size */
+    text-align: center;
   }
 
   .contact-content {
@@ -1308,6 +1310,7 @@ p {
   z-index: 1000;
   backdrop-filter: blur(5px); /* Smooth glass effect */
 }
+
 /* Pop-up Box */
 .popup-content {
   background: #1e1e1e; /* Sophisticated dark background */
@@ -1382,6 +1385,37 @@ p {
   transform: translateY(0); /* Reset on click */
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .popup {
+    padding-top: 500px; /* Adjust padding for better vertical alignment on small screens */
+  }
+
+  .popup-content {
+    width: 90%; /* Make the pop-up take up more screen width on mobile */
+    padding: 20px; /* Reduce padding for smaller screens */
+    border-radius: 10px; /* Slightly smaller border radius for mobile */
+  }
+
+  .popup-content h2 {
+    font-size: 22px; /* Slightly smaller font size for mobile */
+  }
+
+  .popup-content p {
+    font-size: 14px; /* Smaller font size for better readability on mobile */
+  }
+
+  .popup-content button {
+    padding: 12px 20px; /* Slightly smaller button padding for mobile */
+    font-size: 14px; /* Smaller font size for mobile */
+  }
+
+  .close {
+    top: 12px;
+    right: 16px;
+    font-size: 20px; /* Slightly smaller close button for mobile */
+  }
+}
 /* Copy Confirmation Message */
 #copyMessage {
   font-size: 14px;
