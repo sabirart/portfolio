@@ -128,7 +128,10 @@ function copyPhoneNumber() {
 }
 
 
-//ensure the open portfolio when clicking on the home ctr button
+//ensure the open portfolio when clicked on the home ctr bu
+window.location.href = "https://sabirportfolio.github.io/.com/#portfolio";
+
+
 
   }
 });
