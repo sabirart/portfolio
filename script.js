@@ -10,10 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="text-glow">Professional UI/UX & Graphic Designer</span>
             </h1><br>
             <p class="hero-subtitle">Welcome to My Portfolio Website <br> I design modern, minimalist interfaces that engage, inspire, and convert.</p>
-<a href="https://sabirsportfolio.github.io/com/#portfolio" id="portfolio">
-  <button type="button" class="portfolio-btn">Open Portfolio</button>
-</a>
-
+              <a href="https://sabirart.github.io/portfolio/#portfolio">
+                 <button type="button" class="portfolio-btn">Open Portfolio</button>
+               </a>
            </div>
           <div class="hero-background"></div>
         </div>
