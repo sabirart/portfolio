@@ -1088,7 +1088,7 @@ p {
   object-fit: cover;
   border-radius: 10px; /* Slightly rounded edges for a modern look */
 }
-@media (max-width: 768px){
+@media (max-width: 1080px){
   .profile-gallery{
   display: inherit;
   margin-top: 0%;
@@ -1147,6 +1147,7 @@ align-items: center;
 justify-content: flex-start;
 gap: 10px;
 }
+
 
 .skills li:hover,
 .software-content li:hover {
@@ -1386,7 +1387,7 @@ color: #ffffff;
 display: flex;
 gap: 30px;
 max-width: 1200px;
-width: 90%;
+width: 100%;
 }
 
 .experience-content,
@@ -1516,146 +1517,108 @@ animation: translate 1.5s ease-in-out infinite;
 
 /* Responsive Design */
 @media (max-width: 768px) {
-/* Gallery Navigation Buttons */
-.gallery-prev,
-.gallery-next {
-font-size: 22px;
-width: 45px;
-height: 45px;
-padding: 10px;
-}
-.about{
-padding-top: 30% !important;
-}
-/* About Section */
-.about .container {
-flex-direction: column; /* Stack items vertically */
-gap: 20px; /* Reduce gap */
-text-align: justify; /* Adjust text alignment */
+  /* About Section */
+  .about {
+    padding-top: 30% !important;
+  }
+
+  .about .container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px; /* 10px margin from left and right */
+  }
+
+  /* Profile Gallery */
+  .profile-gallery {
+    width: 300px;
+    height: 300px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  /* Bio Section */
+  .bio {
+    padding: 20px;
+  }
+
+  .bio h3 {
+    font-size: 36px;
+  }
+
+  .bio p {
+    font-size: 16px;
+  }
+
+  /* Skills, Software, Education, Hobbies, Experience, Languages Sections */
+  .skills .container,
+  .education .container,
+  .experience-languages .container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px; /* 10px margin from left and right */
+  }
+
+  .skills-content,
+  .software-content,
+  .education-content,
+  .hobbies-content,
+  .experience-content,
+  .languages-content {
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* UL Lists - Ensure 2 columns */
+  .skills ul,
+  .software-content ul,
+  .hobbies-content ul,
+  .languages-content ul {
+    grid-template-columns: repeat(2, fr); /* 2 columns */
+    gap: 10px;
+  }
+
+  /* List Items */
+  .skills li,
+  .software-content li,
+  .hobbies-content li,
+  .languages-content li {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Section Headings */
+  .skills h3,
+  .software-content h3,
+  .education-content h3,
+  .hobbies-content h3,
+  .experience-content h3,
+  .languages-content h3 {
+    font-size: 28px;
+  }
+
+  /* Experience Section */
+  .experience-item h4 {
+    font-size: 18px;
+  }
+
+  .experience-item p {
+    font-size: 14px;
+  }
+
+  .experience-item ul li {
+    font-size: 12px;
+  }
 }
 
-/* Profile Gallery */
-.profile-gallery {
-width: 300px;
-height: 300px;
-margin-bottom: 20px; /* Space below gallery */
-}
-
-/* Bio Section */
-.bio {
-padding: 20px; /* Reduce padding */
-}
-
-.bio h3 {
-font-size: 36px; /* Smaller heading */
-}
-
-.bio p {
-font-size: 16px; /* Smaller paragraph */
-}
-
-/* Experience, Languages, Skills, Education */
-.experience-languages .container,
-.skills .container,
-.education .container {
-flex-direction: column;
-gap: 20px;
-align-items: center;
-}
-
-/* Content Section */
-.experience-content,
-.languages-content,
-.skills-content,
-.software-content,
-.education-content,
-.hobbies-content {
-width: 100%;
-padding: 20px; /* Reduce padding */
-}
-
-/* Two-column layout for lists */
-.languages-content ul,
-.skills ul,
-.software-content ul,
-.hobbies-content ul {
-display: grid;
-grid-template-columns: repeat(2, 1fr); /* 2 columns */
-gap: 10px; /* Smaller gap for smaller screens */
-}
-
-/* List Item Styling */
-.skills li,
-.software-content li,
-.hobbies-content li,
-.languages-content li {
-display: flex;
-align-items: center;
-gap: 8px; /* Smaller gap */
-padding: 10px; /* Smaller padding */
-font-size: 14px; /* Smaller text */
-}
-
-/* Icon Adjustments */
-.skills li .custom-icon,
-.software-content li .custom-icon,
-.hobbies-content li .custom-icon,
-.languages-content li .custom-icon {
-font-size: 16px; /* Slightly smaller icons */
-flex-shrink: 0; /* Prevent icons from shrinking */
-}
-
-/* Section Headings */
-.skills h3,
-.software-content h3,
-.education-content h3,
-.hobbies-content h3,
-.experience-content h3,
-.languages-content h3 {
-font-size: 28px; /* Smaller heading */
-}
-
-/* Experience Section */
-.experience-item h4 {
-font-size: 18px; /* Smaller heading */
-}
-
-.experience-item p {
-font-size: 14px; /* Smaller text */
-}
-
-.experience-item ul li {
-font-size: 12px; /* Smaller text */
-}
-}
-
-/* Adjustments for Very Small Screens */
 @media (max-width: 480px) {
-/* Switch to 1 column on very small screens */
-.languages-content ul,
-.skills ul,
-.software-content ul,
-.hobbies-content ul {
-grid-template-columns: 1fr;
-}
-
-/* Further Reduce List Item Sizing */
-.skills li,
-.software-content li,
-.hobbies-content li,
-.languages-content li {
-font-size: 12px; /* Even smaller text */
-gap: 6px; /* Smaller gap */
-padding: 8px; /* Smaller padding */
-}
-
-/* Icon Adjustments */
-.skills li .custom-icon,
-.software-content li .custom-icon,
-.hobbies-content li .custom-icon,
-.languages-content li .custom-icon {
-font-size: 14px; /* Smaller icons */
-}
+  /* Further Reduce List Item Sizing */
+  .skills li,
+  .software-content li,
+  .hobbies-content li,
+  .languages-content li {
+    font-size: 12px;
+    padding: 8px;
+  }
 }
 
 /* Portfolio Section - Full Screen */
