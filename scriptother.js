@@ -158,3 +158,51 @@ function copyPhoneNumber() {
       }
   });
   
+  //toogle change theme 
+  document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    const body = document.body;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        body.classList.add(savedTheme);
+        if (savedTheme === "dark-theme") {
+            setMoonIcon();
+        } else {
+            setSunIcon();
+        }
+    }
+
+    // Toggle theme on click
+    themeToggle.addEventListener("click", function () {
+        if (body.classList.contains("light-theme")) {
+            body.classList.remove("light-theme");
+            body.classList.add("dark-theme");
+            setMoonIcon();
+            localStorage.setItem("theme", "dark-theme");
+        } else {
+            body.classList.remove("dark-theme");
+            body.classList.add("light-theme");
+            setSunIcon();
+            localStorage.setItem("theme", "light-theme");
+        }
+    });
+
+    function setSunIcon() {
+        themeIcon.innerHTML = `
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93L3.51 3.51M20.49 20.49l-1.42-1.42M4 12H2M22 12h-2M4.93 19.07L3.51 20.49M20.49 3.51l-1.42 1.42"></path>
+        `;
+    }
+
+    function setMoonIcon() {
+        themeIcon.innerHTML = `
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        `;
+    }
+});
+
+//moon sun animations
+
