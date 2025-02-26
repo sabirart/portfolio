@@ -19,51 +19,141 @@ document.addEventListener('DOMContentLoaded', () => {
       </section>
     `,
     about: `
-   <section id="about" class="about">
-  <div class="container">
-    <div class="profile-image">
-      <img src="images/profile.jpg" alt="Sabir Hussain - UI/UX Designer" loading="lazy">
-    </div>
-    <div class="about-content">
+   <!-- Main Content -->
+<main>
+  <!-- About Section -->
+  <section class="about">
+    <div class="container">
+      <!-- Profile Image Gallery -->
+      <div class="profile-gallery">
+        <div class="profile-image active">
+          <img src="images/profile.jpg" alt="Your Name">
+        </div>
+       </div>
+      <!-- Bio Section -->
       <div class="bio">
-        <h3>Hi, I'm <span class="highlight">Sabir Hussain</span>,</h3>
-        <p>A passionate <span class="highlight">UI/UX</span> and <span class="highlight">Graphic Designer</span> dedicated to crafting visually compelling and user-friendly digital experiences. With expertise in industry-leading tools like Figma, Adobe XD, Sketch, and the Adobe Creative Suite, I transform ideas into stunning designs that enhance usability and engagement. My approach blends creativity with functionality, ensuring every design not only looks great but also delivers an intuitive user experience. <br> Let’s create something extraordinary together!</p>
-        <div class="skills">
-          <h3 style="text-align: center;">Skills & Tools</h3>
-          <ul>
-            <li><i class="fab fa-figma"></i> Figma</li>
-            <li>
-              <img src="icons/adobe-xd.svg" alt="adobe" class="custom-icon"> Adobe XD
-            </li>
-            <li><i class="fab fa-sketch"></i> Sketch</li>
- <li>
-              <img src="icons/adobe-ps.svg" alt="adobe-ps" class="custom-icon"> Adobe Photoshop
- </li>
-<li>
-              <img src="icons/adobe-ai.svg" alt="adobe-ai" class="custom-icon"> Adobe Illustrator
- </li>
-<li>
-              <img src="icons/adobe-ae.svg" alt="adobe-ae" class="custom-icon"> Adobe After Effects
-</li>
-<li>
-              <img src="icons/adobe-pr.svg" alt="adobe-pr" class="custom-icon"> Adobe Premiere
-</li>
-             <li><i class="fas fa-pen-nib"></i> CorelDRAW</li>
-<li>
-              <img src="icons/canva.svg" alt="canva" class="custom-icon"> Canva
- </li>
-             <li><i class="fas fa-cube"></i> Blender (3D Design)</li>
-            <li><i class="fab fa-html5"></i> HTML/CSS</li>
-            <li><i class="fab fa-js"></i> JavaScript</li>
-            <li><i class="fab fa-wordpress"></i> WordPress</li>
-            <li><i class="fas fa-pencil-ruler"></i> UI/UX Design</li>
-            <li><i class="fas fa-palette"></i> Brand Identity Design</li>
-            <li><i class="fas fa-shapes"></i> Prototyping</li>
-            <li><i class="fas fa-film"></i> Motion Graphics</li>
-            <li><i class="fas fa-text-height"></i> Typography</li>
-          </ul>
+        <h3>About <span class="highlight">Me</span></h3>
+        <p>Hi, I'm <span class="highlight">Sabir Hussain</span>, a passionate <span class="highlight">Graphic Designer</span> with expertise in <span class="highlight">UI/UX Design, Front-End Web Development, and Video Editing</span>. I love creating innovative solutions and delivering high-quality work. With <span class="highlight">7 years</span> of experience, I specialize in crafting visually appealing designs and digital experiences.</p>
+
+        <div class="about-section">
+            <p>
+                I've had the privilege of working with esteemed organizations like <span class="highlight">ZABIST ZABTech</span>, particularly at their <span class="highlight">Thatta campus</span>, known for its excellence in technical education and skill development. 
+                I’ve also collaborated with <span class="highlight">RLCC (Rana Liaquat Ali Craftsmen Colony)</span> and <span class="highlight">The Hunar Foundation</span>, where I have successfully trained multiple batches in <span class="highlight">Graphic Design and Digital Marketing</span>, empowering students with essential creative and marketing skills.
+            </p>
+            <p>
+                Beyond graphic design, I am a multi-skilled professional, excelling in <span class="highlight">UI/UX Design, Front-End Web Development, and Video Editing</span>. My passion lies in creating innovative digital experiences, and I always strive to push creative boundaries.
+            </p>
+            <p><strong>Let’s connect and build something amazing together!</strong></p>
         </div>
       </div>
+    </div>
+    
+  </section>
+
+  <!-- Skills and Software Section -->
+  <section class="skills">
+    <div class="container">
+      <div class="skills-content">
+        <h3>Skills</h3>
+        <ul>
+                <li><i class="fas fa-code custom-icon"></i>Web Development</li>
+            <li><i class="fas fa-pencil-ruler custom-icon"></i>UI/UX Design</li>
+            <li><i class="fas fa-tasks custom-icon"></i>Project Management</li>
+            <li><i class="fas fa-chart-line custom-icon"></i>Data Analysis</li>
+            <li><i class="fas fa-palette custom-icon"></i>Graphic Design</li>
+            <li><i class="fab fa-js custom-icon"></i>JavaScript</li>
+            <li><i class="fab fa-react custom-icon"></i>React</li>
+            <li><i class="fab fa-node-js custom-icon"></i>Node.js</li>
+            <li><i class="fas fa-palette custom-icon"></i> Brand Identity Design</li>
+            <li><i class="fas fa-text-height custom-icon"></i> Typography</li>
+            <li><i class="fas fa-pencil-ruler custom-icon"></i> UI/UX Design</li>
+            <li><i class="fas fa-palette custom-icon"></i> Brand Identity Design</li>
+            <li><i class="fas fa-shapes custom-icon"></i> Prototyping</li>
+            <li><i class="fas fa-film custom-icon"></i> Motion Graphics</li>
+                    </ul>
+      </div>
+      <div class="software-content">
+        <h3>Software Used</h3>
+        <ul>
+            <li><i class="fab fa-figma custom-icon"></i> Figma</li>
+            <li><i class="fab fa-adobe custom-icon"></i> Adobe XD</li> <!-- Generic Adobe icon -->
+            <li><i class="fas fa-image custom-icon"></i> Adobe Photoshop</li> <!-- Generic image icon -->
+            <li><i class="fas fa-paint-brush custom-icon"></i> Adobe Illustrator</li> <!-- Generic paint brush icon -->
+            <li><i class="fas fa-video custom-icon"></i> Adobe Premiere</li> <!-- Generic video icon -->
+            <li><i class="fas fa-film custom-icon"></i> After Effects (Basics)</li> <!-- Generic film icon -->
+            <li><i class="fab fa-html5 custom-icon"></i> HTML/CSS</li>
+            <li><i class="fab fa-js custom-icon"></i> JavaScript Basic</li>
+            <li><i class="fab fa-wordpress custom-icon"></i> WordPress (Basics)</li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education and Hobbies Section -->
+  <section class="education">
+    <div class="container">
+      <!-- Education Section -->
+      <div class="education-content">
+        <h3>Education</h3>
+        <div class="education-item">
+          <h4><i class="fas fa-graduation-cap custom-icon"></i>Bachelor of Science in Computer Science</h4>
+          <p>University Name, Graduation Year</p>
+        </div>
+        <div class="education-item">
+          <h4><i class="fas fa-certificate custom-icon"></i>Certification in Web Development</h4>
+          <p>Online Platform, Completion Year</p>
+        </div>
+      </div>
+
+      <!-- Hobbies Section -->
+      <div class="hobbies-content">
+        <h3>Hobbies</h3>
+        <ul>
+          <li><i class="fas fa-camera custom-icon"></i>Photography</li>
+          <li><i class="fas fa-plane custom-icon"></i>Traveling</li>
+          <li><i class="fas fa-book custom-icon"></i>Reading</li>
+          <li><i class="fas fa-guitar custom-icon"></i>Playing Guitar</li>
+          <li><i class="fas fa-hiking custom-icon"></i>Hiking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+<!-- Experience and Languages Section -->
+<section class="experience-languages">
+  <div class="container">
+    <!-- Experience Section -->
+    <div class="experience-content">
+      <h3>Experience</h3>
+      <div class="experience-item">
+        <h4><i class="fas fa-briefcase custom-icon"></i>Senior Web Developer</h4>
+        <p>Tech Innovators Inc. | Jan 2020 - Present</p>
+        <ul>
+          <li>Led a team of 5 developers to build scalable web applications using React and Node.js.</li>
+          <li>Optimized application performance, reducing load times by 40%.</li>
+          <li>Collaborated with cross-functional teams to deliver projects on time and within budget.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h4><i class="fas fa-briefcase custom-icon"></i>UI/UX Designer</h4>
+        <p>Creative Solutions Agency | Jun 2017 - Dec 2019</p>
+        <ul>
+          <li>Designed intuitive user interfaces for web and mobile applications.</li>
+          <li>Conducted user research and usability testing to improve product design.</li>
+          <li>Created wireframes and prototypes using Figma and Adobe XD.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Languages Section -->
+    <div class="languages-content">
+      <h3>Languages</h3>
+      <ul>
+        <li><i class="fas fa-language custom-icon"></i>English (Fluent)</li>
+        <li><i class="fas fa-language custom-icon"></i>Spanish (Intermediate)</li>
+        <li><i class="fas fa-language custom-icon"></i>French (Basic)</li>
+        <li><i class="fas fa-language custom-icon"></i>German (Basic)</li>
+      </ul>
     </div>
   </div>
 </section>
