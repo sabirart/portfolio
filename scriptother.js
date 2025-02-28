@@ -61,38 +61,138 @@ function animateContentItems() {
   });
 }
 
-// Function to initialize animations on page load (top to bottom)
+document.addEventListener("DOMContentLoaded", function () {
+  const logo = document.querySelector(".logo");
+  if (!logo) return; // Exit if logo isn't found
+
+  // Create firefly container
+  const fireflyContainer = document.createElement("div");
+  fireflyContainer.classList.add("firefly-container");
+  logo.appendChild(fireflyContainer);
+
+  // Firefly setup
+  const numFireflies = 20;
+  const fireflies = [];
+  const logoRect = logo.getBoundingClientRect();
+  const centerX = logoRect.left + logoRect.width / 2;
+  const centerY = logoRect.top + logoRect.height / 2;
+
+  // Create fireflies
+  for (let i = 0; i < numFireflies; i++) {
+    const firefly = document.createElement("div");
+    firefly.classList.add("firefly");
+
+    const size = Math.random() * 3 + 2; // Random size between 2px and 5px
+    firefly.style.setProperty("--size", `${size}px`);
+
+    // Initial position within the logo area
+    firefly.style.left = `${Math.random() * 80 + 10}%`;
+    firefly.style.top = `${Math.random() * 80 + 10}%`;
+
+    fireflyContainer.appendChild(firefly);
+    fireflies.push({
+      element: firefly,
+      idleX: 0,
+      idleY: 0,
+      angle: Math.random() * 360,
+    });
+  }
+
+  // Move fireflies in random patterns
+  function moveFireflies() {
+    fireflies.forEach((fireflyData) => {
+      const firefly = fireflyData.element;
+
+      // Update angle for random movement (slower and smoother)
+      fireflyData.angle += (Math.random() - 0.5) * 20; // Reduced angle change
+      const moveX = Math.cos(fireflyData.angle * (Math.PI / 180)) * (Math.random() * 5 + 2); // Slower movement
+      const moveY = Math.sin(fireflyData.angle * (Math.PI / 180)) * (Math.random() * 5 + 2); // Slower movement
+
+      fireflyData.idleX += moveX;
+      fireflyData.idleY += moveY;
+
+      // Constrain fireflies within a radius around the logo
+      const distanceFromCenter = Math.sqrt(
+        fireflyData.idleX * fireflyData.idleX + fireflyData.idleY * fireflyData.idleY
+      );
+      if (distanceFromCenter > 50) { // Smaller radius to keep fireflies closer
+        fireflyData.idleX *= 0.8;
+        fireflyData.idleY *= 0.8;
+      }
+
+      // Apply movement to firefly
+      firefly.style.transition = "transform 1s linear"; // Slower transition
+      firefly.style.transform = `translate(${fireflyData.idleX}px, ${fireflyData.idleY}px) rotate(${fireflyData.angle}deg)`;
+    });
+
+    requestAnimationFrame(moveFireflies); // Smooth animation loop
+  }
+
+  // Start firefly movement
+  moveFireflies();
+
+  // Mouse interaction
+  document.addEventListener("mousemove", (event) => {
+    const cursorX = event.clientX;
+    const cursorY = event.clientY;
+
+    fireflies.forEach((fireflyData) => {
+      const firefly = fireflyData.element;
+      const rect = firefly.getBoundingClientRect();
+      const fireflyX = rect.left + rect.width / 2;
+      const fireflyY = rect.top + rect.height / 2;
+
+      const dx = cursorX - fireflyX;
+      const dy = cursorY - fireflyY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 60) {
+        const angle = Math.atan2(dy, dx);
+        const pushX = Math.cos(angle) * -20; // Reduced push effect
+        const pushY = Math.sin(angle) * -20; // Reduced push effect
+
+        firefly.style.transition = "transform 0.3s ease-out"; // Smoother transition
+        firefly.style.transform = `translate(${pushX}px, ${pushY}px) scale(1.1) rotate(${angle * (180 / Math.PI)}deg)`;
+        firefly.classList.add("fighting");
+      } else {
+        firefly.classList.remove("fighting");
+      }
+    });
+  });
+});
+
+// Initialize page animations
 function initializePageAnimations() {
   const logo = document.querySelector('.logo');
   const navLinks = document.querySelectorAll('.nav-links li');
 
   // Hide elements initially
   logo.style.opacity = '0';
-  logo.style.transform = 'translateY(-20px)'; // Start above
-  navLinks.forEach(link => {
+  logo.style.transform = 'translateY(-20px)';
+  navLinks.forEach((link) => {
     link.style.opacity = '0';
-    link.style.transform = 'translateY(-20px)'; // Start above
+    link.style.transform = 'translateY(-20px)';
   });
 
-  // Animate logo after a slight delay
+  // Animate logo
   setTimeout(() => {
     logo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
     logo.style.opacity = '1';
-    logo.style.transform = 'translateY(0)'; // Move down to final position
-  }, 200); // Delay for logo animation
+    logo.style.transform = 'translateY(0)';
+  }, 200);
 
   // Animate nav links with staggered delay
   navLinks.forEach((link, index) => {
     setTimeout(() => {
       link.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
       link.style.opacity = '1';
-      link.style.transform = 'translateY(0)'; // Move down to final position
-    }, 400 + index * 200); // Staggered delay for each link
+      link.style.transform = 'translateY(0)';
+    }, 400 + index * 200);
   });
-
-  // Animate main content items (top to bottom)
-  animateContentItems();
 }
+
+// Call the initialization function
+initializePageAnimations();
 
 // Initialize animations when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initializePageAnimations);
@@ -158,7 +258,6 @@ function copyPhoneNumber() {
       }
   });
   
-  //toogle change theme 
   document.addEventListener("DOMContentLoaded", function () {
     const themeToggle = document.getElementById("theme-toggle");
     const themeIcon = document.getElementById("theme-icon");
@@ -188,6 +287,10 @@ function copyPhoneNumber() {
             setSunIcon();
             localStorage.setItem("theme", "light-theme");
         }
+
+        // Trigger particle effect and icon animation
+        createParticles();
+        animateIcon();
     });
 
     function setSunIcon() {
@@ -202,7 +305,85 @@ function copyPhoneNumber() {
             <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
         `;
     }
+
+    function createParticles() {
+        const particleCount = 20; // Number of particles
+        const toggleRect = themeToggle.getBoundingClientRect();
+        const centerX = toggleRect.width / 2;
+        const centerY = toggleRect.height / 2;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement("div");
+            particle.classList.add("particle");
+            themeToggle.appendChild(particle);
+
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * 30; // Random distance from center
+            const size = Math.random() * 3 + 2; // Random size
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.backgroundColor = "white";
+            particle.style.position = "absolute";
+            particle.style.left = `${centerX}px`;
+            particle.style.top = `${centerY}px`;
+            particle.style.borderRadius = "50%";
+            particle.style.pointerEvents = "none";
+            particle.style.opacity = "0.8";
+            particle.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+            particle.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
+
+            // Animate particles
+            setTimeout(() => {
+                particle.style.transform = `translate(${Math.cos(angle) * distance * 2}px, ${Math.sin(angle) * distance * 2}px)`;
+                particle.style.opacity = "0";
+            }, 10);
+
+            // Remove particles after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 600);
+        }
+    }
+
+    function animateIcon() {
+        themeIcon.style.transform = "scale(1.2)";
+        themeIcon.style.transition = "transform 0.3s ease-in-out";
+
+        setTimeout(() => {
+            themeIcon.style.transform = "scale(1)";
+        }, 300);
+    }
 });
 
-//moon sun animations
+// Block right-click (no pop-up)
+document.addEventListener('contextmenu', (e) => {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault(); // Prevents the context menu from appearing
+  }
+});
 
+// Block drag-and-drop
+document.addEventListener('dragstart', (e) => {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault(); // Prevents dragging the image
+  }
+});
+
+// Block long-press on mobile (no pop-up)
+let touchTimer;
+document.addEventListener('touchstart', (e) => {
+  if (e.target.tagName === 'IMG') {
+    touchTimer = setTimeout(() => {
+      e.preventDefault(); // Prevents the long-press menu
+    }, 500); // Adjust the duration for long-press detection
+  }
+});
+
+document.addEventListener('touchend', () => {
+  clearTimeout(touchTimer); // Clears the timer if the touch ends
+});
+
+document.addEventListener('touchmove', () => {
+  clearTimeout(touchTimer); // Clears the timer if the user moves their finger
+});
