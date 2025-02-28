@@ -1,6 +1,5 @@
 /* Reset and Global Styles */
 * {
-  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -18,18 +17,55 @@ html, body {
   cursor: url('icons/cursor.png') 16 16, auto !important; /* Default cursor */
   background-color: #1a1a1a;
 }
-/* Theme Toggle Button - Glassmorphism */
+/* Light Theme - Glassmorphism Toggle Button */
 #theme-toggle {
   position: fixed;
-  top: 2.1% !important;
+  top: 2.5% !important;
   right: 30px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition-medium);
+  background: rgba(255, 255, 255, 0.3); /* Softer white */
+  backdrop-filter: blur(15px); /* More blur for a premium feel */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
   z-index: 9999 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Soft white border */
+}
+
+/* Hover Effect */
+#theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+/* Active Click Effect */
+#theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Light Mode Adjustments */
+.light-theme #theme-toggle {
+  background: rgba(240, 240, 240, 0.6);
+  color: black;
+  border: 1px solid rgba(204, 204, 204, 0.8); /* Soft white border */
+}
+
+.light-theme #theme-toggle:hover {
+  background: rgba(240, 240, 240, 0.8);
+}
+
+/* Dark Mode Adjustments */
+.dark-theme #theme-toggle {
+  background: rgba(20, 20, 20, 0.4);
+  color: white;
+}
+
+.dark-theme #theme-toggle:hover {
+  background: rgba(20, 20, 20, 0.6);
 }
 
 /*Color Root Library */
@@ -358,51 +394,34 @@ p {
   }
 }
 
-/* Default (Dark Mode) Logo Styling */
-.logo {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--text-primary); /* Ensures high contrast on dark background */
-  text-decoration: none;
-  transition: color 0.4s ease-in-out;
+/* Firefly Container */
+.firefly-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
 
-.logo:hover {
-  color: var(--accent-primary); /* Branding color on hover */
+/* Firefly Styling */
+.firefly {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: var(--accent-primary, #ffcc00);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-primary, #ffcc00);
+  opacity: 0.9;
+  transition: transform 1s ease-in-out;
 }
 
-/* Light Mode Logo Styling */
-.light-theme .logo {
-  color: var(--text-tertiary); /* Darker text for contrast on light background */
+/* Fireflies "attack" cursor */
+.firefly.fighting {
+  transform: scale(1.3);
+  box-shadow: 0 0 20px var(--accent-primary, #ffcc00);
 }
 
-.light-theme .logo:hover {
-  color: var(--accent-primary); /* Same branding effect */
-}
-
-
-/* Default (Dark Mode) Logo Styling */
-.logo {
-  font-size: clamp(1.4rem, 2vw, 1.8rem); /* Ensures scalability */
-  font-weight: 600;
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: color 0.4s ease-in-out;
-  line-height: 1.2; /* Improves readability for multi-line logo */
-}
-
-.logo:hover {
-  color: var(--accent-primary); /* Branding color on hover */
-}
-
-/* Light Mode Logo Styling */
-.light-theme .logo {
-  color: var(--text-tertiary); /* Darker text for contrast on light background */
-}
-
-.light-theme .logo:hover {
-  color: var(--accent-primary); /* Same branding effect */
-}
 
 /* Navbar Container */
 .navbar {
@@ -430,7 +449,7 @@ p {
 }
 
 .navbar a:hover {
-  color: var(--text-primary); /* Highlight effect */
+  color: var(--accent-primary); /* Highlight effect */
 }
 
 /* Light Theme Navbar */
@@ -564,38 +583,57 @@ p {
 /* Theme Toggle Button */
 #theme-toggle {
   position: fixed;
-  top: 20px;
+  top: 3% !important;
   right: 20px;
-  padding: 16px; /* Increased padding for better touch targets */
-  transition: all 0.3s ease; /* Smooth transition for all properties */
+  padding: 14px;
+  transition: all 0.3s ease;
   z-index: 1051;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px; /* Fixed width for a larger button */
-  height: 56px; /* Fixed height for a larger button */
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(145deg, var(--background-hover), var(--text-tertiary)); /* Gradient background */
+  border: 1px solid #252525; /* Subtle border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  overflow: hidden; /* Ensure particles stay inside the button */
 }
 
 #theme-toggle:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
+  transform: scale(1.1);
 }
 
+#theme-toggle:active {
+  transform: scale(0.95); /* Slight press effect */
+}
+
+/* Theme Icon */
 #theme-icon {
-  width: 32px; /* Increased size for better visibility */
-  height: 32px; /* Increased size for better visibility */
+  width: 32px;
+  height: 32px;
   color: var(--text-primary);
-  transition: all 0.3s ease; /* Smooth transition for icon properties */
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Soft shadow for the icon */
 }
 
 .light-theme #theme-icon {
   color: var(--text-tertiary);
 }
 
-/* Animation for Theme Change */
-#theme-toggle.active {
-  animation: pulse 0.5s ease-in-out; /* Pulse animation on theme change */
+/* Particle Effect */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Glow effect for particles */
 }
 
+/* Animation for Theme Change */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -606,6 +644,10 @@ p {
   100% {
     transform: scale(1);
   }
+}
+
+#theme-toggle.active {
+  animation: pulse 0.5s ease-in-out; /* Pulse animation on theme change */
 }
 
 /* Responsive Adjustments */
@@ -636,6 +678,37 @@ p {
   #theme-icon {
     width: 24px;
     height: 24px;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #theme-toggle {
+      top: 15px;
+      right: 15px;
+      padding: 14px;
+      width: 48px;
+      height: 48px;
+  }
+
+  #theme-icon {
+      width: 28px;
+      height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  #theme-toggle {
+      top: 10px;
+      right: 10px;
+      padding: 12px;
+      width: 40px;
+      height: 40px;
+  }
+
+  #theme-icon {
+      width: 24px;
+      height: 24px;
   }
 }
 
@@ -1615,6 +1688,7 @@ animation: translate 1.5s ease-in-out infinite;
 }
 
 /* Portfolio Section - Full Screen */
+
 .portfolio {
 -webkit-user-select: none; /* Safari */
 -moz-user-select: none; /* Firefox */
@@ -1639,7 +1713,7 @@ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive layou
 gap: 14px; /* Increased gap for better spacing */
 max-width: 1400px; /* Slightly larger max-width */
 width: 100%;
-padding: 20px;
+padding: 26px;
 }
 
 .grid-item {
@@ -1676,7 +1750,7 @@ filter: brightness(1.1); /* Slight brightness increase */
 width: 100%;
 height: 100%;
 object-fit: cover; /* Ensures media fills the container */
-border-radius: 7px; /* Matches grid-item border-radius */
+border-radius: 6px; /* Matches grid-item border-radius */
 transition: transform 0.3s ease;
 }
 
@@ -1739,128 +1813,158 @@ animation-fill-mode: both;
 .grid-item:nth-child(6) { animation-delay: 0.6s; }
 
 /* Fullscreen Modal Appearing Below Navbar */
-/* MODAL BACKDROP */
 .modal {
--webkit-user-select: none; /* Safari */
--moz-user-select: none; /* Firefox */
--ms-user-select: none; /* Internet Explorer/Edge */
-user-select: none; /* Standard syntax */
-display: none;
-position: fixed;
-z-index: 9999; /* Higher priority */
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.85); /* Softer dark background */
-backdrop-filter: blur(8px); /* Premium blur effect */
-overflow: auto;
-padding-top: 80px;
-user-select: none;
-padding-bottom: auto;
-transition: opacity 0.3s ease-out; /* Smooth transition for modal */
+  user-select: none;
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  overflow: auto;
+  padding-top: 80px;
+  transition: opacity 0.3s ease-out;
 }
 
-/* MODAL CONTENT */
 .modal-content {
-display: block;
-margin: auto;
-margin-top: 30px;
-max-width: 90%; /* Allows better scaling */
-max-height: 72vh; /* Maintains aspect ratio */
-border-radius: 10px;
-box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3); /* Soft shadow */
-animation: fadeZoom 0.4s ease-out;
-transition: transform 0.4s ease-out; /* Smooth scaling for modal content */
-z-index: 1200; /* Higher priority */
+  display: block;
+  margin: 30px auto 0;
+  max-width: 90%;
+  max-height: 72vh;
+  border-radius: 10px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
+  animation: fadeZoom 0.4s ease-out;
+  transition: transform 0.4s ease-out;
+  z-index: 1200;
 }
 
-/* Animation Effect */
+@media (max-width: 768px) {
+  .modal {
+    align-items: center;
+    justify-content: center;
+    padding: 10vh 5%;
+  }
+  
+  .modal-content {
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    background: rgba(255, 71, 87, 0.8);
+    transform: scale(1.1);
+  }
+}
+
 @keyframes fadeZoom {
-from {
-transform: scale(0.95); /* Slight scaling for smooth transition */
-}
-to {
-transform: scale(1); /* Scale to normal size */
-}
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* Caption Below Image */
 #caption {
-margin: 15px auto;
-text-align: center;
-color: #fff;
-font-size: 20px;
-transition: opacity 0.3s ease-out; /* Smooth transition for caption */
+  margin: 15px auto;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  transition: opacity 0.3s ease-out;
 }
 
-/* When modal is shown */
 .modal.show {
-display: block;
-opacity: 1; /* Fade in the modal */
+  display: block;
+  opacity: 1;
 }
 
 .modal.show .modal-content {
-transform: scale(1); /* Ensure content is at full size */
+  transform: scale(1);
 }
 
 .modal.show #caption {
-opacity: 1; /* Ensure caption is fully visible */
+  opacity: 1;
 }
-/* Close Button */
+
 .close {
-position: absolute;
-top: 16% !important;
-right: 35px;
-color: #fff;
-font-size: 40px;
-font-weight: bold;
-transition: color 0.3s ease;
+  position: absolute;
+  top: 16% !important;
+  right: 35px;
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
 }
 
 .close:hover {
-color: #ff4757;
+  color: #ff4757;
+  transform: scale(1.1);
 }
 
-/* Light Mode Modal */
 .light-theme .modal {
-  background: rgba(255, 255, 255, 0.80); /* Softer white background */
-  backdrop-filter: blur(8px); /* Keeps premium blur effect */
+  background: rgba(255, 255, 255, 0.80);
 }
 
-/* Light Mode Modal Content */
 .light-theme .modal-content {
-  background: #f8f9fa; /* Clean white background */
-  color: #333; /* Dark text for contrast */
+  background: #f8f9fa;
+  color: #333;
   border-radius: 12px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Light Mode Caption */
 .light-theme #caption {
-  color: #444; /* Darker text */
+  color: #444;
 }
 
-/* Light Mode Close Button */
 .light-theme .close {
-  color: #555; /* Darker close button */
+  color: #6b6b6b;
 }
 
 .light-theme .close:hover {
-  color: #e63946; /* Elegant red hover */
+  color: #e63946;
 }
 
-/* Navigation Arrows */
 .nav-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   color: white;
-  font-size: 32px; /* Slightly smaller for a modern look */
+  font-size: 32px;
   user-select: none;
   transition: all 0.3s ease-in-out;
   padding: 12px;
-  background-color: rgba(0, 0, 0, 0.4); /* Softer transparency */
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 50%;
   width: 48px;
   height: 48px;
@@ -1868,27 +1972,24 @@ color: #ff4757;
   align-items: center;
   justify-content: center;
   z-index: 1050;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle depth */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .nav-arrow:hover {
   color: #ff4757;
-  background-color: rgba(0, 0, 0, 0.7);
-  transform: scale(1.0.5); /* Smooth scale effect */
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* Positioning */
 .left-arrow {
-  left: 15px;
+  left: 30px;
 }
 
 .right-arrow {
-  right: 15px;
+  right: 30px;
 }
 
-/* Light Mode Support */
 .light-theme .nav-arrow {
-  color: #333; /* Dark arrows for visibility */
+  color: #333;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -1897,88 +1998,103 @@ color: #ff4757;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
-.portfolio{
-padding-top: 16% !important;
-}
-.modal{
-padding-top: 35% !important;
-}
-.grid {
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-}
-
-@media (max-width: 480px) {
-.portfolio {
-padding: 0 10px;
-}
-
-.grid {
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 15px;
-padding: 40px 0px 100px 0;
-}
-
-.overlay {
-visibility: collapse;
-}
-
-.modal{
-padding-top: 5%;
-}
-.modal-content {
-max-width: 95%;
-max-height: 70vh;
-}
-
-.nav-arrow {
-font-size: 30px;
-width: 44px;
-height: 44px;
-}
-
-.close {
-font-size: 30px;
-top: 10px;
-right: 20px;
-}
+  .portfolio {
+    padding-top: 16% !important;
+  }
+  .modal {
+    padding-top: 35% !important;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 }
 
 @media (max-width: 480px) {
-.portfolio {
-padding: 0px 10px;
+  .portfolio {
+    padding: 0 10px;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 40px 0 100px;
+  }
+  .overlay {
+    visibility: collapse;
+  }
+  .modal {
+    padding-top: 5%;
+  }
+  .modal-content {
+    max-width: 95%;
+    max-height: 70vh;
+  }
+  .nav-arrow {
+    font-size: 0px;
+    width: 46px;
+    height: 46px;
+  }
+  .close {
+    font-size: 30px;
+    top: 10px;
+    right: 20px;
+  }
 }
 
-.grid {
-grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-gap: 10px;
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  .modal-content {
+    max-width: 100%;
+    max-height: 60vh;
+  }
+  .nav-arrow {
+    font-size: 24px;
+    width: 30px;
+    height: 30px;
+  }
+  .close {
+    font-size: 24px;
+    top: 30px;
+    right: 15px;
+  }
 }
-.overlay {
-visibility: collapse;
+/* Light Theme Fullscreen Modal */
+.light-theme .modal {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
 }
 
-.modal{
-padding-top: 22%;
+.light-theme .modal-content {
+  background: #f8f9fa;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.modal-content {
-max-width: 100%;
-max-height: 60vh;
+.light-theme #caption {
+  color: #444;
 }
 
-.nav-arrow {
-font-size: 24px;
-width: 40px;
-height: 40px;
+.light-theme .close {
+  color: #6b6b6b;
 }
 
-.close {
-font-size: 24px;
-top: 30px;
-right: 15px;
+.light-theme .close:hover {
+  color: #e63946;
+  transform: scale(1.1);
 }
+
+.light-theme .nav-arrow {
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.light-theme .nav-arrow:hover {
+  color: #e63946;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* Contact Section */
@@ -2433,7 +2549,8 @@ footer {
   bottom: 0;
   overflow: hidden; /* Prevent unwanted overflow */
   border-top: 1px solid rgba(122, 122, 122, 0.4);
-  padding: 20px 0;
+  padding: 10px 0;
+  z-index: 1 !important;
 }
 
 footer .container {
@@ -2444,6 +2561,7 @@ footer .container {
   align-items: center;
   flex-wrap: wrap;
   padding: 0 20px;
+  z-index: 1 !important;
 }
 
 footer p {
