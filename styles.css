@@ -549,6 +549,11 @@ p {
   .logo {
     margin-right: auto;
   }
+  
+  @media (max-width: 768px) {
+    .logo {
+     font-size: 35px !important;
+  }
 
   .nav-links {
     display: none;
