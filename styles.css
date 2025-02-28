@@ -167,7 +167,7 @@ body.light-theme {
 .light-theme .skills,
 .light-theme .education,
 .light-theme .experience-languages {
-  background-color: #ffffff; /* Pure white for sections */
+  background: linear-gradient(-225deg, #eeeff1, #e9ecef); /* Light gradient background */
   color: #212529; /* Dark text for better readability */
 }
 
@@ -179,9 +179,9 @@ body.light-theme {
 .light-theme .hobbies-content,
 .light-theme .experience-content,
 .light-theme .languages-content {
-  background-color: #ffffff; /* Pure white for content boxes */
+  background: linear-gradient(-160deg, #f3f3f5, #dfe3e7); /* Light gradient background */
   color: #292121; /* Dark text for better readability */
-  border: 1px solid #cacaca; /* Subtle border for separation */
+  border: 1px solid #c7c7c7; /* Subtle border for separation */
 }
 
 /* Light Theme - Experience List Items */
@@ -209,7 +209,7 @@ body.light-theme {
 .light-theme .hobbies-content li,
 .light-theme .experience-item,
 .light-theme .languages-content li {
-  background-color: #fbfcfd; /* Light gray background for list items */
+  background-color: #f7f7f7; /* Light gray background for list items */
   border: 1px solid #d1d4d8; /* Subtle border for list items */
 }
 
@@ -547,8 +547,7 @@ p {
   }
 
   .logo {
-    margin-right: auto;
-    font-size: 34px !important;
+    font-size: 30px !important;
   }
   
   .nav-links {
@@ -1067,7 +1066,7 @@ p {
 
 /* About Section */
 .about {
-  padding-top: 10% !important;
+  padding-top: 11% !important;
   padding: 6% 0;
   background-color: #1e1e1e;
   color: #ffffff;
@@ -1586,7 +1585,7 @@ animation: translate 1.5s ease-in-out infinite;
 @media (max-width: 768px) {
   /* About Section */
   .about {
-    padding-top: 30% !important;
+    padding-top: 32% !important;
   }
 
   .about .container {
@@ -1699,12 +1698,12 @@ padding-top: 6% !important;
 position: relative;
 width: 100%; /* Full viewport width */
 min-height: 100vh; /* Ensures it always fits screen */
-background: linear-gradient(135deg, #1a1a1a, #000000); /* Gradient dark background */
+background: linear-gradient(135deg, #1a1a1a, #1b1b1b); /* Gradient dark background */
 color: #ffffff; /* Light text for contrast */
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 20px; /* Adds some padding around the grid */
+padding: 10px; /* Adds some padding around the grid */
 overflow: hidden; /* Prevents overflow from animations */
 }
 
@@ -1734,7 +1733,7 @@ filter: brightness(1.1); /* Slight brightness increase */
 }
 /* Light Theme - Portfolio Section */
 .light-theme .portfolio {
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Light gradient background */
+  background: linear-gradient(135deg, #e1e2e4, #e9ecef); /* Light gradient background */
   color: var(--text-tertiary); /* Dark text for light theme */
 }
 
@@ -2001,7 +2000,7 @@ animation-fill-mode: both;
 
 @media (max-width: 1200px) {
   .portfolio {
-    padding-top: 16% !important;
+    padding-top: 17% !important;
   }
   .modal {
     padding-top: 35% !important;
@@ -2160,7 +2159,7 @@ box-shadow: 0 8px 16px rgba(255, 107, 107, 0.3); /* Glow effect */
 
 /* Contact Section - Light Theme */
 .light-theme .contact {
-  background-color: #f8f9fa; /* Light background */
+  background: linear-gradient(135deg, #eeeff1, #e9ecef); /* Light gradient background */
   color: var(--text-tertiary); /* Dark text for light theme */
 }
 
@@ -2171,9 +2170,9 @@ box-shadow: 0 8px 16px rgba(255, 107, 107, 0.3); /* Glow effect */
 
 /* Contact Content Container - Light Theme */
 .light-theme .contact-content {
-  background: #ffffff; /* Light background for content */
+  background: linear-gradient(-225deg, #eeeff1, #e9ecef); /* Light gradient background */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Subtle shadow for light theme */
-  border: 1px solid rgba(0, 0, 0, 0.2); /* Subtle border for depth */
+  border: 1px solid rgba(73, 73, 73, 0.3); /* Subtle border for depth */
 }
 .light-theme .contact-content p{
   color: var(--text-tertiary);
@@ -2219,7 +2218,6 @@ background: #2a2a2a; /* Darker input background */
 color: #ffffff; /* White text for readability */
 font-family: 'Inter', sans-serif; /* Modern font */
 }
-
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
 color: #aaa; /* Light gray placeholder text */
@@ -2276,14 +2274,14 @@ opacity: 0.6;
 /* Contact Form - Light Theme */
 .light-theme .contact-form input,
 .light-theme .contact-form textarea {
-  border: 2px solid #ddd; /* Light border */
-  background: #ffffff; /* White background */
+  border: 2px solid #cacaca; /* Light border */
+  background: #ececec; /* Light gradient background */
   color: var(--text-tertiary); /* Dark text for light theme */
 }
 
 .light-theme .contact-form input::placeholder,
 .light-theme .contact-form textarea::placeholder {
-  color: #888; /* Darker placeholder text */
+  color: #818181; /* Darker placeholder text */
 }
 
 .light-theme .contact-form input:focus,
