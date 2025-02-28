@@ -1815,15 +1815,17 @@ animation-fill-mode: both;
     right: 15px;
     font-size: 28px;
     color: #fff;
-    background: rgba(0, 0, 0, 0.5);
-    width: 40px;
-    height: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    z-index: 1250;
+
   }
 
   .close:hover {
@@ -1900,7 +1902,9 @@ animation-fill-mode: both;
 }
 
 .light-theme .close {
-  color: #6b6b6b;
+  border-radius: 50%;
+  color: #5f5f5f !important;
+  background-color: #c7c7c7;
 }
 
 .light-theme .close:hover {
