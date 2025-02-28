@@ -548,13 +548,9 @@ p {
 
   .logo {
     margin-right: auto;
+    font-size: 34px !important;
   }
   
-  @media (max-width: 768px) {
-    .logo {
-     font-size: 35px !important;
-  }
-
   .nav-links {
     display: none;
     flex-direction: column;
