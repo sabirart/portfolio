@@ -20,7 +20,7 @@ html, body {
 /* Light Theme - Glassmorphism Toggle Button */
 #theme-toggle {
   position: fixed;
-  top: 2.5% !important;
+  top: 2.5%;
   right: 30px;
   width: 40px;
   height: 40px;
@@ -542,12 +542,11 @@ p {
     flex-direction: row;
     align-items: center;
     padding: 10px;
-    padding-left: 30px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.8) 100%);
+    padding-left: 15px;
   }
 
   .logo {
-    font-size: 30px !important;
+    font-size: 26px !important;
   }
   
   .nav-links {
@@ -583,7 +582,7 @@ p {
 /* Theme Toggle Button */
 #theme-toggle {
   position: fixed;
-  top: 3% !important;
+  top: 3%;
   right: 20px;
   padding: 14px;
   transition: all 0.3s ease;
@@ -663,52 +662,6 @@ p {
   #theme-icon {
     width: 28px;
     height: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  #theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 12px;
-    width: 40px;
-    height: 40px;
-  }
-
-  #theme-icon {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  #theme-toggle {
-      top: 15px;
-      right: 15px;
-      padding: 14px;
-      width: 48px;
-      height: 48px;
-  }
-
-  #theme-icon {
-      width: 28px;
-      height: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  #theme-toggle {
-      top: 10px;
-      right: 10px;
-      padding: 12px;
-      width: 40px;
-      height: 40px;
-  }
-
-  #theme-icon {
-      width: 24px;
-      height: 24px;
   }
 }
 
@@ -825,7 +778,6 @@ p {
     display: none;
   }
 }
-
 
 /* Hero Section */
 .hero {
