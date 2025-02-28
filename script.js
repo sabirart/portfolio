@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <!-- Fullscreen Modal -->
         <div id="full-screen-modal" class="modal">
-          <span class="close">&times;</span>
+          <span class="close"><i class="fas fa-times"></i></span>
           <span class="nav-arrow left-arrow">&#10094;</span>
           <span class="nav-arrow right-arrow">&#10095;</span>
           <img class="modal-content" id="modal-img">
@@ -229,442 +229,493 @@ document.addEventListener('DOMContentLoaded', () => {
     `
   };
 
-  // Function to generate portfolio items dynamically
-  function generatePortfolioItems() {
-    const portfolioItems = [];
+// Function to generate portfolio items dynamically
+function generatePortfolioItems() {
+  const portfolioItems = [];
 
-    // Add 30 images
-    for (let i = 1; i <= 30; i++) {
-      portfolioItems.push({
-        type: 'image',
-        src: `images/project${i}.jpg`,
-        caption: `Project ${i} - Graphic Design`
-      });
-    }
-
-    // Add 5 videos
-    for (let i = 1; i <= 5; i++) {
-      portfolioItems.push({
-        type: 'video',
-        src: `videos/project${i}.mp4`,
-        caption: `Project ${i + 30} - Play Video`
-      });
-    }
-
-    return portfolioItems;
+  // Add 15 images
+  for (let i = 1; i <= 15; i++) {
+    portfolioItems.push({
+      type: 'image',
+      src: `images/project${i}.jpg`,
+      srcset: `images/project${i}-small.jpg 480w, images/project${i}.jpg 1024w`, // Responsive images
+      sizes: '(max-width: 600px) 480px, 1024px', // Responsive sizes
+      caption: `Project ${i} - Graphic Design`,
+      alt: `Project ${i} - Graphic Design`
+    });
   }
 
-  // Function to load content dynamically with smooth transitions
-  function loadPage(page) {
-    const mainContent = document.getElementById('main-content');
-    const loadingSpinner = document.getElementById('loading-spinner');
+  // Add 10 GIFs
+  for (let i = 16; i <= 25; i++) {
+    portfolioItems.push({
+      type: 'image', // Treat GIFs as images
+      src: `gif/project${i}.gif`,
+      srcset: `gif/project${i}-small.gif 480w, gif/project${i}.gif 1024w`, // Responsive GIFs
+      sizes: '(max-width: 600px) 480px, 1024px', // Responsive sizes
+      caption: `Project ${i} - Animated Design`,
+      alt: `Project ${i} - Animated Design`
+    });
+  }
 
-    if (!pages[page]) return;
-    if (mainContent.innerHTML.trim() === pages[page].trim()) return;
+  // Add 5 videos
+  for (let i = 26; i <= 30; i++) {
+    portfolioItems.push({
+      type: 'video',
+      src: `videos/project${i}.mp4`,
+      poster: `videos/project${i}-thumbnail.jpg`, // Thumbnail for the video
+      caption: `Project ${i} - Play Video`,
+      alt: `Project ${i} - Video`
+    });
+  }
 
-    // Reset body overflow to auto when loading a new page
-    document.body.style.overflow = 'auto';
-
-    // Hide spinner only for Contact page
-    if (page === 'contact') {
-        loadingSpinner.style.display = 'none';
-    } else {
-        loadingSpinner.style.display = 'block';
-    }
-
-    console.log("Loading spinner started..."); // Debugging
-
-    mainContent.classList.add('page-transition');
-
-    setTimeout(() => {
-        mainContent.innerHTML = pages[page];
-        window.scrollTo(0, 0);
-        mainContent.classList.remove('page-transition');
-        mainContent.classList.add('page-enter');
-
-        updateActiveLink(page);
-        if (page === 'portfolio') {
-            generatePortfolioGrid();
-            initializeModal();
-        }
-        if (page === 'contact') {
-            initializeFormValidation();
-        }
-
-        animateContentItems();
-
-        setTimeout(() => {
-            if (page !== 'contact') { 
-                loadingSpinner.style.display = 'none';
-            }
-            console.log("Loading spinner stopped!"); // Debugging
-            mainContent.classList.remove('page-enter');
-        }, 300);
-    }, 300);
+  return portfolioItems;
 }
 
-  // Function to animate content items one by one (top to bottom)
-  function animateContentItems() {
-    const contentItems = document.querySelectorAll('#main-content > *');
-    contentItems.forEach((item, index) => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(-20px)'; // Start above
-      item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+// Generate portfolio grid dynamically
+function generatePortfolioGrid() {
+  const grid = document.getElementById('portfolio-grid');
+  grid.innerHTML = ''; // Clear existing content
 
-      setTimeout(() => {
-        item.style.opacity = '1';
-        item.style.transform = 'translateY(0)'; // Move down to final position
-      }, index * 200); // Staggered delay for each item
-    });
-  }
+  const portfolioItems = generatePortfolioItems(); // Get the dynamically generated items
+  const fragment = document.createDocumentFragment(); // Use a document fragment
 
-  // Function to initialize animations on page load (top to bottom)
-  function initializePageAnimations() {
-    const navbar = document.querySelector('.navbar');
-    const logo = document.querySelector('.logo');
-    const navLinks = document.querySelectorAll('.nav-links li');
+  portfolioItems.forEach((item, index) => {
+    const gridItem = document.createElement('div');
+    gridItem.classList.add('grid-item');
 
-    // Hide elements initially
-    logo.style.opacity = '0';
-    logo.style.transform = 'translateY(-20px)'; // Start above
-    navLinks.forEach(link => {
-      link.style.opacity = '0';
-      link.style.transform = 'translateY(-20px)'; // Start above
-    });
-
-    // Animate logo after a slight delay
-    setTimeout(() => {
-      logo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      logo.style.opacity = '1';
-      logo.style.transform = 'translateY(0)'; // Move down to final position
-    }, 200); // Delay for logo animation
-
-    // Animate nav links with staggered delay
-    navLinks.forEach((link, index) => {
-      setTimeout(() => {
-        link.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        link.style.opacity = '1';
-        link.style.transform = 'translateY(0)'; // Move down to final position
-      }, 400 + index * 200); // Staggered delay for each link
-    });
-
-    // Animate main content items (top to bottom)
-    animateContentItems();
-  }
-
-  // Initialize animations when the DOM is fully loaded
-  document.addEventListener('DOMContentLoaded', initializePageAnimations);
-
-  // Generate portfolio grid dynamically
-  function generatePortfolioGrid() {
-    const grid = document.getElementById('portfolio-grid');
-    grid.innerHTML = ''; // Clear existing content
-
-    const portfolioItems = generatePortfolioItems(); // Get the dynamically generated items
-
-    portfolioItems.forEach((item, index) => {
-      const gridItem = document.createElement('div');
-      gridItem.classList.add('grid-item');
-
-      if (item.type === 'image') {
-        const img = document.createElement('img');
-        img.src = item.src;
-        img.alt = `Project ${index + 1}`;
-        img.loading = 'lazy';
-        img.classList.add('project-img');
-        gridItem.appendChild(img);
-      } else if (item.type === 'video') {
-        const video = document.createElement('video');
-        video.controls = true;
-        video.preload = 'metadata';
-        const source = document.createElement('source');
-        source.src = item.src;
-        source.type = 'video/mp4';
-        video.appendChild(source);
-        gridItem.appendChild(video);
-        gridItem.classList.add('video-item');
-      }
-
-      const overlay = document.createElement('div');
-      overlay.classList.add('overlay');
-      const caption = document.createElement('p');
-      caption.innerText = item.caption;
-      overlay.appendChild(caption);
-      gridItem.appendChild(overlay);
-
-      grid.appendChild(gridItem);
-    });
-  }
-
-  // Update active link in the navigation
-  function updateActiveLink(activePage) {
-    document.querySelectorAll('.nav-links a, .logo, .mobile-nav-links a').forEach(link => {
-      link.classList.toggle('active', link.getAttribute('data-page') === activePage);
-    });
-  }
-
-  // Event listeners for navigation links (desktop and mobile)
-  document.querySelectorAll('.nav-links a, .logo, .mobile-nav-links a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const page = link.getAttribute('href').substring(1); // Get the page name from href
-      loadPage(page);
-      history.pushState({ page }, '', `#${page}`);
-    });
-  });
-
-  // Handle browser back/forward buttons
-  window.addEventListener('popstate', (e) => {
-    const page = e.state?.page || 'home';
-    loadPage(page);
-  });
-
-  // Load default page (home) on initial load
-  window.addEventListener('load', () => {
-    const hash = window.location.hash.substring(1);
-    const page = hash || 'home';
-    loadPage(page);
-  });
-
-  function initializeModal() {
-    const modal = document.getElementById("full-screen-modal");
-    const modalImg = document.getElementById("modal-img");
-    const modalVideo = document.getElementById("modal-video");
-    const captionText = document.getElementById("caption");
-    const leftArrow = document.querySelector(".left-arrow");
-    const rightArrow = document.querySelector(".right-arrow");
-    const closeBtn = document.querySelector(".close");
-
-    const gridItems = document.querySelectorAll(".grid-item");
-    const mediaItems = [];
-    const captions = [];
-
-    gridItems.forEach((item, index) => {
-        const img = item.querySelector(".project-img");
-        const video = item.querySelector("video");
-
-        if (img) {
-            mediaItems.push({ type: "image", src: img.src });
-            captions.push(item.querySelector(".overlay p").innerText);
-        } else if (video) {
-            mediaItems.push({ type: "video", src: video.querySelector("source").src });
-            captions.push(item.querySelector(".overlay p").innerText);
-        }
-    });
-
-    let currentIndex = 0;
-    let scale = 1; // Initial zoom scale
-    const zoomLevels = [1, 1.5]; // Allowed zoom levels: 1x, 1.5x
-    let isDragging = false;
-    let startX, startY, translateX = 0, translateY = 0;
-    let touchStartX, touchStartY, touchEndX, touchEndY;
-
-    // Function to open modal at the user's current viewport position
-    function openModal(index) {
-        modal.style.display = "block";
-        currentIndex = index;
-        scale = 1; // Reset zoom scale
-        translateX = 0; // Reset translate X
-        translateY = 0; // Reset translate Y
-
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const viewportHeight = window.innerHeight;
-
-        modal.style.top = `${scrollTop}px`;
-        modal.style.height = `${viewportHeight}px`;
-
-        if (mediaItems[index].type === "image") {
-            modalImg.src = mediaItems[index].src;
-            modalImg.style.display = "block";
-            modalVideo.style.display = "none";
-            modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`; // Apply initial scale and translation
-        } else {
-            modalVideo.src = mediaItems[index].src;
-            modalVideo.style.display = "block";
-            modalImg.style.display = "none";
-        }
-
-        captionText.innerHTML = captions[index];
-        document.body.style.overflow = 'hidden'; // Disable page scroll when modal is open
+    if (item.type === 'image') {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.srcset = item.srcset || ''; // Add srcset for responsive images
+      img.sizes = item.sizes || ''; // Add sizes for responsive images
+      img.alt = item.alt || `Project ${index + 1}`;
+      img.loading = 'lazy'; // Ensure lazy loading for images
+      img.classList.add('project-img');
+      img.onerror = () => {
+        img.src = 'images/fallback.jpg'; // Fallback image in case of error
+      };
+      gridItem.appendChild(img);
+    } else if (item.type === 'video') {
+      const video = document.createElement('video');
+      video.controls = true;
+      video.preload = 'none'; // Ensure video is not preloaded
+      video.poster = item.poster; // Set the thumbnail for the video
+      const source = document.createElement('source');
+      source.src = item.src;
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      video.onerror = () => {
+        video.innerHTML = '<p>Unable to load video.</p>'; // Fallback message
+      };
+      gridItem.appendChild(video);
+      gridItem.classList.add('video-item');
     }
 
-    gridItems.forEach((item, index) => {
-        const img = item.querySelector(".project-img");
-        const video = item.querySelector("video");
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    const caption = document.createElement('p');
+    caption.innerText = item.caption;
+    overlay.appendChild(caption);
+    gridItem.appendChild(overlay);
 
-        if (img) img.addEventListener("click", () => openModal(index));
-        if (video) video.addEventListener("click", () => openModal(index));
-    });
+    fragment.appendChild(gridItem); // Append to fragment instead of directly to the DOM
+  });
 
-    leftArrow.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-        openModal(currentIndex);
-    });
+  grid.appendChild(fragment); // Append the fragment to the DOM in one go
+}
 
-    rightArrow.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % mediaItems.length;
-        openModal(currentIndex);
-    });
+// Function to load content dynamically with smooth transitions
+function loadPage(page) {
+  const mainContent = document.getElementById('main-content');
+  const loadingSpinner = document.getElementById('loading-spinner');
 
-    closeBtn.addEventListener("click", () => {
+  if (!pages[page]) return; // Exit if the page doesn't exist
+  if (mainContent.innerHTML.trim() === pages[page].trim()) return; // Exit if the content is already loaded
+
+  // Reset body overflow to auto when loading a new page
+  document.body.style.overflow = 'auto';
+
+  // Hide spinner only for Contact page
+  loadingSpinner.style.display = page === 'contact' ? 'none' : 'block';
+
+  console.log("Loading spinner started..."); // Debugging
+
+  mainContent.classList.add('page-transition');
+
+  setTimeout(() => {
+    mainContent.innerHTML = pages[page];
+    window.scrollTo(0, 0);
+    mainContent.classList.remove('page-transition');
+    mainContent.classList.add('page-enter');
+
+    updateActiveLink(page);
+    if (page === 'portfolio') {
+      generatePortfolioGrid();
+      initializeModal();
+    }
+    if (page === 'contact') {
+      initializeFormValidation();
+    }
+
+    animateContentItems();
+
+    setTimeout(() => {
+      if (page !== 'contact') {
+        loadingSpinner.style.display = 'none';
+      }
+      console.log("Loading spinner stopped!"); // Debugging
+      mainContent.classList.remove('page-enter');
+    }, 300);
+  }, 300);
+}
+
+// Ensure images are cached
+function cacheImages() {
+  const portfolioItems = generatePortfolioItems();
+  portfolioItems.forEach(item => {
+    if (item.type === 'image') {
+      const img = new Image();
+      img.src = item.src;
+      if (item.srcset) {
+        img.srcset = item.srcset;
+      }
+      if (item.sizes) {
+        img.sizes = item.sizes;
+      }
+    }
+  });
+}
+
+// Initialize the page
+function initializePage() {
+  cacheImages();
+  loadPage('portfolio'); // Load the portfolio page by default
+}
+
+// Call initializePage when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', initializePage);
+
+// Function to animate content items one by one (top to bottom)
+function animateContentItems() {
+  const contentItems = document.querySelectorAll('#main-content > *');
+  contentItems.forEach((item, index) => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(-20px)'; // Start above
+    item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+
+    setTimeout(() => {
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)'; // Move down to final position
+    }, index * 200); // Staggered delay for each item
+  });
+}
+
+// Function to initialize animations on page load (top to bottom)
+function initializePageAnimations() {
+  const navbar = document.querySelector('.navbar');
+  const logo = document.querySelector('.logo');
+  const navLinks = document.querySelectorAll('.nav-links li');
+
+  // Hide elements initially
+  logo.style.opacity = '0';
+  logo.style.transform = 'translateY(-20px)'; // Start above
+  navLinks.forEach(link => {
+    link.style.opacity = '0';
+    link.style.transform = 'translateY(-20px)'; // Start above
+  });
+
+  // Animate logo after a slight delay
+  setTimeout(() => {
+    logo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    logo.style.opacity = '1';
+    logo.style.transform = 'translateY(0)'; // Move down to final position
+  }, 200); // Delay for logo animation
+
+  // Animate nav links with staggered delay
+  navLinks.forEach((link, index) => {
+    setTimeout(() => {
+      link.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      link.style.opacity = '1';
+      link.style.transform = 'translateY(0)'; // Move down to final position
+    }, 400 + index * 200); // Staggered delay for each link
+  });
+
+  // Animate main content items (top to bottom)
+  animateContentItems();
+}
+
+// Initialize animations when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', initializePageAnimations);
+
+// Update active link in the navigation
+function updateActiveLink(activePage) {
+  document.querySelectorAll('.nav-links a, .logo, .mobile-nav-links a').forEach(link => {
+    link.classList.toggle('active', link.getAttribute('data-page') === activePage);
+  });
+}
+
+// Event listeners for navigation links (desktop and mobile)
+document.querySelectorAll('.nav-links a, .logo, .mobile-nav-links a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const page = link.getAttribute('href').substring(1); // Get the page name from href
+    loadPage(page);
+    history.pushState({ page }, '', `#${page}`);
+  });
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', (e) => {
+  const page = e.state?.page || 'home';
+  loadPage(page);
+});
+
+// Load default page (home) on initial load
+window.addEventListener('load', () => {
+  const hash = window.location.hash.substring(1);
+  const page = hash || 'home';
+  loadPage(page);
+});
+
+function initializeModal() {
+  const modal = document.getElementById("full-screen-modal");
+  const modalImg = document.getElementById("modal-img");
+  const modalVideo = document.getElementById("modal-video");
+  const captionText = document.getElementById("caption");
+  const leftArrow = document.querySelector(".left-arrow");
+  const rightArrow = document.querySelector(".right-arrow");
+  const closeBtn = document.querySelector(".close");
+
+  const gridItems = document.querySelectorAll(".grid-item");
+  const mediaItems = [];
+  const captions = [];
+
+  gridItems.forEach((item, index) => {
+    const img = item.querySelector(".project-img");
+    const video = item.querySelector("video");
+
+    if (img) {
+      mediaItems.push({ type: "image", src: img.src });
+      captions.push(item.querySelector(".overlay p").innerText);
+    } else if (video) {
+      mediaItems.push({ type: "video", src: video.querySelector("source").src });
+      captions.push(item.querySelector(".overlay p").innerText);
+    }
+  });
+
+  let currentIndex = 0;
+  let scale = 1; // Initial zoom scale
+  const zoomLevels = [1, 1.5]; // Allowed zoom levels: 1x, 1.5x
+  let isDragging = false;
+  let startX, startY, translateX = 0, translateY = 0;
+  let touchStartX, touchStartY, touchEndX, touchEndY;
+
+  // Function to open modal at the user's current viewport position
+  function openModal(index) {
+    modal.style.display = "block";
+    currentIndex = index;
+    scale = 1; // Reset zoom scale
+    translateX = 0; // Reset translate X
+    translateY = 0; // Reset translate Y
+
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const viewportHeight = window.innerHeight;
+
+    modal.style.top = `${scrollTop}px`;
+    modal.style.height = `${viewportHeight}px`;
+
+    if (mediaItems[index].type === "image") {
+      modalImg.src = mediaItems[index].src;
+      modalImg.style.display = "block";
+      modalVideo.style.display = "none";
+      modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`; // Apply initial scale and translation
+    } else {
+      modalVideo.src = mediaItems[index].src;
+      modalVideo.style.display = "block";
+      modalImg.style.display = "none";
+    }
+
+    captionText.innerHTML = captions[index];
+    document.body.style.overflow = 'hidden'; // Disable page scroll when modal is open
+  }
+
+  gridItems.forEach((item, index) => {
+    const img = item.querySelector(".project-img");
+    const video = item.querySelector("video");
+
+    if (img) img.addEventListener("click", () => openModal(index));
+    if (video) video.addEventListener("click", () => openModal(index));
+  });
+
+  leftArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+    openModal(currentIndex);
+  });
+
+  rightArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % mediaItems.length;
+    openModal(currentIndex);
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    modalVideo.pause();
+    document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      modalVideo.pause();
+      document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (modal.style.display === "block") {
+      if (event.key === "Escape") {
         modal.style.display = "none";
         modalVideo.pause();
         document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
-    });
+      } else if (event.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+        openModal(currentIndex);
+      } else if (event.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % mediaItems.length;
+        openModal(currentIndex);
+      }
+    }
+  });
 
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-            modalVideo.pause();
-            document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
+  modalImg.addEventListener("wheel", (event) => {
+    if (mediaItems[currentIndex].type === "image") {
+      event.preventDefault();
+
+      const imageRect = modalImg.getBoundingClientRect();
+      const offsetX = event.clientX - imageRect.left;
+      const offsetY = event.clientY - imageRect.top;
+
+      const zoomDirection = event.deltaY < 0 ? 1 : -1;
+      const currentZoomIndex = zoomLevels.indexOf(scale);
+      let newZoomIndex = currentZoomIndex + zoomDirection;
+
+      if (newZoomIndex < 0) newZoomIndex = 0;
+      if (newZoomIndex >= zoomLevels.length) newZoomIndex = zoomLevels.length - 1;
+
+      scale = zoomLevels[newZoomIndex];
+
+      const transformOriginX = (offsetX / modalImg.offsetWidth) * 100;
+      const transformOriginY = (offsetY / modalImg.offsetHeight) * 100;
+
+      modalImg.style.transition = "transform 0.3s ease";
+      modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+      modalImg.style.transformOrigin = `${transformOriginX}% ${transformOriginY}%`;
+    }
+  });
+
+  // Drag functionality for zoomed-in images with persistent drag after mouse leave
+  modalImg.addEventListener("mousedown", (event) => {
+    if (scale > 1 && event.button === 0) {
+      isDragging = true;
+      startX = event.clientX - translateX;
+      startY = event.clientY - translateY;
+      modalImg.style.cursor = "grabbing";
+    }
+  });
+
+  modalImg.addEventListener("mousemove", (event) => {
+    if (isDragging) {
+      event.preventDefault();
+      translateX = event.clientX - startX;
+      translateY = event.clientY - startY;
+      modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+    }
+  });
+
+  modalImg.addEventListener("mouseup", () => {
+    if (isDragging) {
+      isDragging = false;
+      modalImg.style.cursor = "grab";
+    }
+  });
+
+  modalImg.addEventListener("mouseleave", () => {
+    if (isDragging) {
+      isDragging = false;
+      modalImg.style.cursor = "grab";
+    }
+  });
+
+  modalImg.addEventListener("click", () => {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    modalImg.style.transition = "transform 0.3s ease";
+    modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+  });
+
+  // Touch event handlers for mobile gestures
+  modalImg.addEventListener("touchstart", (event) => {
+    if (event.touches.length === 1) {
+      // Single touch for swipe gestures
+      touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
+    } else if (event.touches.length === 2) {
+      // Pinch gesture for zoom
+      const touch1 = event.touches[0];
+      const touch2 = event.touches[1];
+      const distance = Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+      );
+      touchStartX = (touch1.clientX + touch2.clientX) / 2;
+      touchStartY = (touch1.clientY + touch2.clientY) / 2;
+      touchStartDistance = distance;
+    }
+  });
+
+  modalImg.addEventListener("touchmove", (event) => {
+    if (event.touches.length === 1 && scale === 1) {
+      // Single touch for swipe gestures
+      touchEndX = event.touches[0].clientX;
+      touchEndY = event.touches[0].clientY;
+    } else if (event.touches.length === 2) {
+      // Pinch gesture for zoom
+      const touch1 = event.touches[0];
+      const touch2 = event.touches[1];
+      const distance = Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+      );
+      const scaleChange = distance / touchStartDistance;
+
+      scale = Math.min(Math.max(1, scale * scaleChange), 2); // Limit zoom between 1x and 2x
+      modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+    }
+  });
+
+  modalImg.addEventListener("touchend", (event) => {
+    if (event.changedTouches.length === 1 && scale === 1) {
+      // Single touch for swipe gestures
+      touchEndX = event.changedTouches[0].clientX;
+      touchEndY = event.changedTouches[0].clientY;
+
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        // Horizontal swipe
+        if (deltaX > 50) {
+          // Swipe right (previous image)
+          currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+          openModal(currentIndex);
+        } else if (deltaX < -50) {
+          // Swipe left (next image)
+          currentIndex = (currentIndex + 1) % mediaItems.length;
+          openModal(currentIndex);
         }
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (modal.style.display === "block") {
-            if (event.key === "Escape") {
-                modal.style.display = "none";
-                modalVideo.pause();
-                document.body.style.overflow = 'auto'; // Enable page scroll when modal is closed
-            } else if (event.key === "ArrowLeft") {
-                currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-                openModal(currentIndex);
-            } else if (event.key === "ArrowRight") {
-                currentIndex = (currentIndex + 1) % mediaItems.length;
-                openModal(currentIndex);
-            }
-        }
-    });
-
-    modalImg.addEventListener("wheel", (event) => {
-        if (mediaItems[currentIndex].type === "image") {
-            event.preventDefault();
-
-            const imageRect = modalImg.getBoundingClientRect();
-            const offsetX = event.clientX - imageRect.left;
-            const offsetY = event.clientY - imageRect.top;
-
-            const zoomDirection = event.deltaY < 0 ? 1 : -1;
-            const currentZoomIndex = zoomLevels.indexOf(scale);
-            let newZoomIndex = currentZoomIndex + zoomDirection;
-
-            if (newZoomIndex < 0) newZoomIndex = 0;
-            if (newZoomIndex >= zoomLevels.length) newZoomIndex = zoomLevels.length - 1;
-
-            scale = zoomLevels[newZoomIndex];
-
-            const transformOriginX = (offsetX / modalImg.offsetWidth) * 100;
-            const transformOriginY = (offsetY / modalImg.offsetHeight) * 100;
-
-            modalImg.style.transition = "transform 0.3s ease";
-            modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-            modalImg.style.transformOrigin = `${transformOriginX}% ${transformOriginY}%`;
-        }
-    });
-
-    // Drag functionality for zoomed-in images with persistent drag after mouse leave
-    modalImg.addEventListener("mousedown", (event) => {
-        if (scale > 1 && event.button === 0) {
-            isDragging = true;
-            startX = event.clientX - translateX;
-            startY = event.clientY - translateY;
-            modalImg.style.cursor = "grabbing";
-        }
-    });
-
-    modalImg.addEventListener("mousemove", (event) => {
-        if (isDragging) {
-            event.preventDefault();
-            translateX = event.clientX - startX;
-            translateY = event.clientY - startY;
-            modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-        }
-    });
-
-    modalImg.addEventListener("mouseup", () => {
-        if (isDragging) {
-            isDragging = false;
-            modalImg.style.cursor = "grab";
-        }
-    });
-
-    modalImg.addEventListener("mouseleave", () => {
-        if (isDragging) {
-            isDragging = false;
-            modalImg.style.cursor = "grab";
-        }
-    });
-
-    modalImg.addEventListener("click", () => {
-        scale = 1;
-        translateX = 0;
-        translateY = 0;
-        modalImg.style.transition = "transform 0.3s ease";
-        modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-    });
-
-    // Touch event handlers for mobile gestures
-    modalImg.addEventListener("touchstart", (event) => {
-        if (event.touches.length === 1) {
-            // Single touch for swipe gestures
-            touchStartX = event.touches[0].clientX;
-            touchStartY = event.touches[0].clientY;
-        } else if (event.touches.length === 2) {
-            // Pinch gesture for zoom
-            const touch1 = event.touches[0];
-            const touch2 = event.touches[1];
-            const distance = Math.hypot(
-                touch2.clientX - touch1.clientX,
-                touch2.clientY - touch1.clientY
-            );
-            touchStartX = (touch1.clientX + touch2.clientX) / 2;
-            touchStartY = (touch1.clientY + touch2.clientY) / 2;
-            touchStartDistance = distance;
-        }
-    });
-
-    modalImg.addEventListener("touchmove", (event) => {
-        if (event.touches.length === 1 && scale === 1) {
-            // Single touch for swipe gestures
-            touchEndX = event.touches[0].clientX;
-            touchEndY = event.touches[0].clientY;
-        } else if (event.touches.length === 2) {
-            // Pinch gesture for zoom
-            const touch1 = event.touches[0];
-            const touch2 = event.touches[1];
-            const distance = Math.hypot(
-                touch2.clientX - touch1.clientX,
-                touch2.clientY - touch1.clientY
-            );
-            const scaleChange = distance / touchStartDistance;
-
-            scale = Math.min(Math.max(1, scale * scaleChange), 2); // Limit zoom between 1x and 2x
-            modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-        }
-    });
-
-    modalImg.addEventListener("touchend", (event) => {
-        if (event.changedTouches.length === 1 && scale === 1) {
-            // Single touch for swipe gestures
-            touchEndX = event.changedTouches[0].clientX;
-            touchEndY = event.changedTouches[0].clientY;
-
-            const deltaX = touchEndX - touchStartX;
-            const deltaY = touchEndY - touchStartY;
-
-            if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                // Horizontal swipe
-                if (deltaX > 50) {
-                    // Swipe right (previous image)
-                    currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-                    openModal(currentIndex);
-                } else if (deltaX < -50) {
-                    // Swipe left (next image)
-                    currentIndex = (currentIndex + 1) % mediaItems.length;
-                    openModal(currentIndex);
-                }
-            }
-        }
-    });
+      }
+    }
+  });
 }
 });
