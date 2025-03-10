@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </h1><br>
             <p class="hero-subtitle">Welcome to My Portfolio Website <br> I design modern, minimalist interfaces that engage, inspire, and convert.</p>
               <a">
-                 <button onclick="onclick="window.location.replace('https://sabirart.github.io/portfolio#portfolio');" type="button" class="portfolio-btn">Open Portfolio</button>
+                 <button onclick="window.location.replace('https://sabirart.github.io/portfolio#portfolio');" type="button" class="portfolio-btn">Open Portfolio</button>
                </a>
            </div>
           <div class="hero-background"></div>
