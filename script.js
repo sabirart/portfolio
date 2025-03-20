@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="text-glow">Professional UI/UX & Graphic Designer</span>
             </h1><br>
             <p class="hero-subtitle">Welcome to My Portfolio Website <br> I design modern, minimalist interfaces that engage, inspire, and convert.</p>
-              <a">
-                 <button onclick="window.location.replace('https://sabirart.github.io/portfolio#portfolio');" type="button" class="portfolio-btn">Open Portfolio</button>
+              <a href="https://sabirart.github.io/portfolio/#portfolio">
+                 <button type="button" class="portfolio-btn">Open Portfolio</button>
                </a>
            </div>
           <div class="hero-background"></div>
@@ -33,7 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
       <!-- Bio Section -->
       <div class="bio">
         <h3>About <span class="highlight">Me</span></h3>
-        <p>Hi, I'm <span class="highlight">Sabir Hussain</span>, a passionate <span class="highlight">Graphic Designer</span> with expertise in <span class="highlight">UI/UX Design, Front-End Web Development, and Video Editing</span>. I love creating innovative solutions and delivering high-quality work. With <span class="highlight">7 years</span> of experience, I specialize in crafting visually appealing designs and digital experiences.</p>
+        <p>Hi, I'm <span class="highlight">Sabir Hussain</span>, a passionate <span class="highlight">Graphic Designer</span> with expertise in <span class="highlight">UI/UX Design, Front-End Web Development, and Video Editing</span>. As a seasoned graphic designer with a background in teaching, I aspire to apply my
+exceptional creative abilities and enthusiasm for design to enhance the visual impact of a dynamic
+team. My goal is to contribute my extensive experience in both graphic design instruction and
+hands-on professional practice to elevate the overall visual aesthetics and user experiences. In
+pursuit of continuous growth, I am seeking challenging opportunities that will enable me to further
+refine my skills, stay abreast of industry trends, and ultimately make a meaningful contribution to
+the design field.</p>
 
         <div class="about-section">
             <p>
@@ -56,65 +62,102 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="skills-content">
         <h3>Skills</h3>
         <ul>
-                <li><i class="fas fa-code custom-icon"></i>Web Development</li>
-            <li><i class="fas fa-pencil-ruler custom-icon"></i>UI/UX Design</li>
-            <li><i class="fas fa-tasks custom-icon"></i>Project Management</li>
-            <li><i class="fas fa-chart-line custom-icon"></i>Data Analysis</li>
-            <li><i class="fas fa-palette custom-icon"></i>Graphic Design</li>
-            <li><i class="fab fa-js custom-icon"></i>JavaScript</li>
-            <li><i class="fab fa-react custom-icon"></i>React</li>
-            <li><i class="fab fa-node-js custom-icon"></i>Node.js</li>
-            <li><i class="fas fa-palette custom-icon"></i> Brand Identity Design</li>
-            <li><i class="fas fa-text-height custom-icon"></i> Typography</li>
-            <li><i class="fas fa-pencil-ruler custom-icon"></i> UI/UX Design</li>
-            <li><i class="fas fa-palette custom-icon"></i> Brand Identity Design</li>
-            <li><i class="fas fa-shapes custom-icon"></i> Prototyping</li>
-            <li><i class="fas fa-film custom-icon"></i> Motion Graphics</li>
-                    </ul>
+    <li><i class="fas fa-code custom-icon"></i>Web Development</li>
+    <li><i class="fas fa-pencil-ruler custom-icon"></i>UI/UX Design</li>
+    <li><i class="fas fa-palette custom-icon"></i>Graphic Design</li>
+    <li><i class="fas fa-palette custom-icon"></i>Brand Identity Design</li>
+    <li><i class="fas fa-text-height custom-icon"></i>Typography</li>
+    <li><i class="fas fa-shapes custom-icon"></i>Prototyping</li>
+    <li><i class="fas fa-camera custom-icon"></i>Photo Editing & Retouching</li>
+    <li><i class="fas fa-video custom-icon"></i>Motion Graphics</li>
+    <li><i class="fas fa-print custom-icon"></i>Print Design</li>
+    <li><i class="fas fa-chart-pie custom-icon"></i>Infographic Design</li>
+    <li><i class="fas fa-paint-brush custom-icon"></i>Illustration</li>
+    <li><i class="fas fa-mobile-alt custom-icon"></i>Responsive Design</li>
+    <li><i class="fas fa-users custom-icon"></i>User Research</li>
+    <li><i class="fas fa-tools custom-icon"></i>Design Software Proficiencye</li>
+    <li><i class="fas fa-brain custom-icon"></i>Creative Problem Solving</li>
+    <li><i class="fas fa-comments custom-icon"></i>Client Communication</li>
+    <li><i class="fas fa-project-diagram custom-icon"></i>Project Management</li>
+    <li><i class="fas fa-eye-dropper custom-icon"></i>Color Theory</li>
+</ul>
       </div>
       <div class="software-content">
         <h3>Software Used</h3>
-        <ul>
-            <li><i class="fab fa-figma custom-icon"></i> Figma</li>
-            <li><i class="fab fa-adobe custom-icon"></i> Adobe XD</li> <!-- Generic Adobe icon -->
-            <li><i class="fas fa-image custom-icon"></i> Adobe Photoshop</li> <!-- Generic image icon -->
-            <li><i class="fas fa-paint-brush custom-icon"></i> Adobe Illustrator</li> <!-- Generic paint brush icon -->
-            <li><i class="fas fa-video custom-icon"></i> Adobe Premiere</li> <!-- Generic video icon -->
-            <li><i class="fas fa-film custom-icon"></i> After Effects (Basics)</li> <!-- Generic film icon -->
-            <li><i class="fab fa-html5 custom-icon"></i> HTML/CSS</li>
-            <li><i class="fab fa-js custom-icon"></i> JavaScript Basic</li>
-            <li><i class="fab fa-wordpress custom-icon"></i> WordPress (Basics)</li>
-          </ul>
+<ul>
+    <!-- Graphic Design Tools -->
+    <li><i class="fab fa-figma custom-icon"></i> Figma</li>
+    <li><i class="fas fa-pencil-ruler custom-icon"></i> Adobe XD</li>
+    <li><i class="fas fa-image custom-icon"></i> Adobe Photoshop</li>
+    <li><i class="fas fa-paint-brush custom-icon"></i> Adobe Illustrator</li>
+    <li><i class="fas fa-video custom-icon"></i> Adobe Premiere Pro</li>
+    <li><i class="fas fa-film custom-icon"></i> Adobe After Effects</li>
+    <li><i class="fas fa-cube custom-icon"></i> Blender (3D Design)</li>
+    <li><i class="fas fa-pencil-alt custom-icon"></i> Procreate (Digital Illustration)</li>
+    <li><i class="fas fa-palette custom-icon"></i> CorelDRAW</li>
+    <li><i class="fas fa-paint-roller custom-icon"></i> Affinity Designer</li>
+    <li><i class="fas fa-crop custom-icon"></i> Canva</li>
+    <li><i class="fas fa-shapes custom-icon"></i> Sketch</li>
+    <li><i class="fas fa-pen-nib custom-icon"></i> Inkscape (Vector Graphics)</li>
+
+    <!-- Web Development Tools -->
+    <li><i class="fas fa-code custom-icon"></i> Visual Studio Code</li>
+    <li><i class="fab fa-html5 custom-icon"></i> HTML/CSS</li>
+    <li><i class="fab fa-js custom-icon"></i>Basic JavaScript</li>
+    <li><i class="fab fa-wordpress custom-icon"></i> WordPress</li>
+    <li><i class="fab fa-git custom-icon"></i>GitHub</li>
+</ul>
       </div>
     </div>
   </section>
 
   <!-- Education and Hobbies Section -->
-  <section class="education">
+<section class="education">
     <div class="container">
-      <!-- Education Section -->
-      <div class="education-content">
-        <h3>Education</h3>
-        <div class="education-item">
-          <h4><i class="fas fa-graduation-cap custom-icon"></i>Bachelor of Science in Computer Science</h4>
-          <p>University Name, Graduation Year</p>
+        <!-- Education Section -->
+        <div class="education-content">
+            <h3>Education</h3>
+            <div class="education-item">
+                <h4><i class="fas fa-graduation-cap custom-icon"></i>Bachelor in Arts</h4>
+                <p>From: Allama Iqbal Open University Karachi, <br><span style="color: #ff4757;">Continuing</span></p>
+            </div>
+
+            <div class="education-item">
+                <h4><i class="fas fa-graduation-cap custom-icon"></i>Intermediate</h4>
+                <p>From: GBS School No. 1 Marvi Town - Karachi, <br><span style="color: #ff4757;">2023</span></p>
+            </div>
+
+            <div class="education-item">
+                <h4><i class="fas fa-certificate custom-icon"></i>Certification in Graphic Designing</h4>
+                <p>From: Government Pakistan Swedish Institute of Technology Karachi, <br><span style="color: #ff4757;">2021</span></p>
+            </div>
+
+            <div class="education-item">
+                <h4><i class="fas fa-certificate custom-icon"></i>Computer Information Tech</h4>
+                <p>From: Adam-Jee Coaching Center Karachi, <br><span style="color: #ff4757;">2018</span></p>
+            </div>
         </div>
-        <div class="education-item">
-          <h4><i class="fas fa-certificate custom-icon"></i>Certification in Web Development</h4>
-          <p>Online Platform, Completion Year</p>
-        </div>
-      </div>
 
       <!-- Hobbies Section -->
       <div class="hobbies-content">
         <h3>Hobbies</h3>
-        <ul>
-          <li><i class="fas fa-camera custom-icon"></i>Photography</li>
-          <li><i class="fas fa-plane custom-icon"></i>Traveling</li>
-          <li><i class="fas fa-book custom-icon"></i>Reading</li>
-          <li><i class="fas fa-guitar custom-icon"></i>Playing Guitar</li>
-          <li><i class="fas fa-hiking custom-icon"></i>Hiking</li>
-        </ul>
+<ul>
+    <li><i class="fas fa-camera custom-icon"></i>Photography</li>
+    <li><i class="fas fa-plane custom-icon"></i>Traveling</li>
+    <li><i class="fas fa-book custom-icon"></i>Reading</li>
+    <li><i class="fas fa-hiking custom-icon"></i>Hiking</li>
+    <li><i class="fas fa-paint-brush custom-icon"></i>Painting</li>
+    <li><i class="fas fa-utensils custom-icon"></i>Cooking</li>
+    <li><i class="fas fa-gamepad custom-icon"></i>Gaming</li>
+    <li><i class="fas fa-music custom-icon"></i>Listening to Music</li>
+    <li><i class="fas fa-film custom-icon"></i>Watching Movies</li>
+    <li><i class="fas fa-seedling custom-icon"></i>Gardening</li>
+    <li><i class="fas fa-swimmer custom-icon"></i>Swimming</li>
+    <li><i class="fas fa-laptop-code custom-icon"></i>Coding Side Projects</li>
+    <li><i class="fas fa-yin-yang custom-icon"></i>Exercise</li>
+    <li><i class="fas fa-puzzle-piece custom-icon"></i>Solving Puzzles</li>
+    <li><i class="fas fa-palette custom-icon"></i>Digital Art</li>
+</ul>
       </div>
     </div>
   </section>
@@ -126,21 +169,30 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="experience-content">
       <h3>Experience</h3>
       <div class="experience-item">
-        <h4><i class="fas fa-briefcase custom-icon"></i>Senior Web Developer</h4>
-        <p>Tech Innovators Inc. | Jan 2020 - Present</p>
+        <h4><i class="fas fa-briefcase custom-icon"></i>Graphic Designing Instructor</h4>
+        <p>SZABIST ZABTech Gharo | 2022</p>
         <ul>
-          <li>Led a team of 5 developers to build scalable web applications using React and Node.js.</li>
-          <li>Optimized application performance, reducing load times by 40%.</li>
-          <li>Collaborated with cross-functional teams to deliver projects on time and within budget.</li>
+          <li>Taught graphic design principles and tools to students.</li><br>
+          <li>Prepared and delivered engaging lessons on design software like Adobe Photoshop, Illustrator, and CorelDRAW.</li><br>
+          <li>Mentored students in creating professional design projects.</li>
         </ul>
       </div>
       <div class="experience-item">
-        <h4><i class="fas fa-briefcase custom-icon"></i>UI/UX Designer</h4>
-        <p>Creative Solutions Agency | Jun 2017 - Dec 2019</p>
+        <h4><i class="fas fa-briefcase custom-icon"></i>Freelance Graphic Designer</h4>
+        <p>Remote Work | Continuing</p>
         <ul>
-          <li>Designed intuitive user interfaces for web and mobile applications.</li>
-          <li>Conducted user research and usability testing to improve product design.</li>
-          <li>Created wireframes and prototypes using Figma and Adobe XD.</li>
+          <li>Worked with clients globally to create logos, branding materials, and marketing designs.</li><br>
+          <li>Delivered high-quality designs within tight deadlines.</li><br>
+          <li>Communicated effectively with clients to understand and fulfill their design needs.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h4><i class="fas fa-briefcase custom-icon"></i>Part-Time Graphic Designer</h4>
+        <p>Sarwan Communication & Documentation Center | 3 Years</p>
+        <ul>
+          <li>Designed brochures, flyers, and other marketing materials.</li><br>
+          <li>Collaborated with the team to ensure consistent branding across all materials.</li><br>
+          <li>Managed multiple projects simultaneously while maintaining high-quality standards.</li>
         </ul>
       </div>
     </div>
@@ -149,10 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="languages-content">
       <h3>Languages</h3>
       <ul>
-        <li><i class="fas fa-language custom-icon"></i>English (Fluent)</li>
-        <li><i class="fas fa-language custom-icon"></i>Spanish (Intermediate)</li>
-        <li><i class="fas fa-language custom-icon"></i>French (Basic)</li>
-        <li><i class="fas fa-language custom-icon"></i>German (Basic)</li>
+        <li><i class="fas fa-language custom-icon"></i>English</li>
+        <li><i class="fas fa-language custom-icon"></i>Urdu</li>
       </ul>
     </div>
   </div>
@@ -164,15 +214,20 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Portfolio items will be dynamically inserted here -->
         </div>
         <!-- Fullscreen Modal -->
-        <div id="full-screen-modal" class="modal">
-          <span class="close"><i class="fas fa-times"></i></span>
-          <span class="nav-arrow left-arrow">&#10094;</span>
-          <span class="nav-arrow right-arrow">&#10095;</span>
-          <img class="modal-content" id="modal-img">
-          <video class="modal-content" id="modal-video" controls></video>
-          <div id="caption"></div>
-        </div>
-      </section>
+    <div id="full-screen-modal" class="modal">
+      <span class="close"><i class="fas fa-times"></i></span>
+      <span class="nav-arrow left-arrow">&#10094;</span>
+      <span class="nav-arrow right-arrow">&#10095;</span>
+      <img class="modal-content" id="modal-img">
+      <video class="modal-content" id="modal-video" controls></video>
+      <div class="heart-button" data-id="modal-heart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart-icon">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
+      <div id="caption"></div>
+    </div>
+  </section>
     `,
     contact: `
       <section id="contact" class="contact">
@@ -229,55 +284,86 @@ document.addEventListener('DOMContentLoaded', () => {
     `
   };
 
-// Function to generate portfolio items dynamically
-function generatePortfolioItems() {
-  const portfolioItems = [];
+  // Cache DOM elements
+  const mainContent = document.getElementById('main-content');
+  const loadingSpinner = document.getElementById('loading-spinner');
+  const portfolioGrid = document.getElementById('portfolio-grid');
+  const modal = document.getElementById('full-screen-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalVideo = document.getElementById('modal-video');
+  const modalCaption = document.getElementById('caption');
+  const closeModal = document.querySelector('.close');
+  const leftArrow = document.querySelector('.left-arrow');
+  const rightArrow = document.querySelector('.right-arrow');
 
-  // Add 15 images
-  for (let i = 1; i <= 15; i++) {
-    portfolioItems.push({
-      type: 'image',
-      src: `images/project${i}.jpg`,
-      srcset: `images/project${i}-small.jpg 480w, images/project${i}.jpg 1024w`, // Responsive images
-      sizes: '(max-width: 600px) 480px, 1024px', // Responsive sizes
-      caption: `Project ${i} - Graphic Design`,
-      alt: `Project ${i} - Graphic Design`
-    });
+  // Initialize IntersectionObserver for lazy loading
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+          img.removeAttribute('data-src');
+          img.removeAttribute('data-srcset');
+          observer.unobserve(img);
+        }
+      });
+    },
+    { rootMargin: '100px' }
+  );
+
+
+// Generate portfolio items dynamically
+  function generatePortfolioItems() {
+    const portfolioItems = [];
+
+    // Add 15 images
+    for (let i = 1; i <= 15; i++) {
+      portfolioItems.push({
+        type: 'image',
+        src: `images/project${i}.jpg`,
+        srcset: `images/project${i}-small.jpg 480w, images/project${i}.jpg 1024w`,
+        sizes: '(max-width: 600px) 480px, 1024px',
+        caption: `Project ${i} - Graphic Design`,
+        alt: `Project ${i} - Graphic Design`
+      });
+    }
+
+    // Add 10 GIFs
+    for (let i = 16; i <= 25; i++) {
+      portfolioItems.push({
+        type: 'image',
+        src: `gif/project${i}.gif`,
+        srcset: `gif/project${i}-small.gif 480w, gif/project${i}.gif 1024w`,
+        sizes: '(max-width: 600px) 480px, 1024px',
+        caption: `Project ${i} - Animated Design`,
+        alt: `Project ${i} - Animated Design`
+      });
+    }
+
+    // Add 5 videos
+    for (let i = 26; i <= 30; i++) {
+      portfolioItems.push({
+        type: 'video',
+        src: `videos/project${i}.mp4`,
+        poster: `videos/project${i}-thumbnail.jpg`,
+        caption: `Project ${i} - Play Video`,
+        alt: `Project ${i} - Video`
+      });
+    }
+
+    return portfolioItems;
   }
-
-  // Add 10 GIFs
-  for (let i = 16; i <= 25; i++) {
-    portfolioItems.push({
-      type: 'image', // Treat GIFs as images
-      src: `gif/project${i}.gif`,
-      srcset: `gif/project${i}-small.gif 480w, gif/project${i}.gif 1024w`, // Responsive GIFs
-      sizes: '(max-width: 600px) 480px, 1024px', // Responsive sizes
-      caption: `Project ${i} - Animated Design`,
-      alt: `Project ${i} - Animated Design`
-    });
-  }
-
-  // Add 5 videos
-  for (let i = 26; i <= 30; i++) {
-    portfolioItems.push({
-      type: 'video',
-      src: `videos/project${i}.mp4`,
-      poster: `videos/project${i}-thumbnail.jpg`, // Thumbnail for the video
-      caption: `Project ${i} - Play Video`,
-      alt: `Project ${i} - Video`
-    });
-  }
-
-  return portfolioItems;
-}
 
 // Generate portfolio grid dynamically
 function generatePortfolioGrid() {
   const grid = document.getElementById('portfolio-grid');
+  if (!grid) return; // Exit if grid element doesn't exist
   grid.innerHTML = ''; // Clear existing content
 
   const portfolioItems = generatePortfolioItems(); // Get the dynamically generated items
-  const fragment = document.createDocumentFragment(); // Use a document fragment
+  const fragment = document.createDocumentFragment(); // Use a document fragment for better performance
 
   portfolioItems.forEach((item, index) => {
     const gridItem = document.createElement('div');
@@ -318,10 +404,110 @@ function generatePortfolioGrid() {
     overlay.appendChild(caption);
     gridItem.appendChild(overlay);
 
+    // Add like button to each portfolio item (bottom-right corner)
+    const likeButton = document.createElement('div');
+    likeButton.classList.add('heart-button', 'grid-heart');
+    likeButton.setAttribute('data-id', index + 1); // Unique ID for each item
+
+    // Check localStorage for liked state
+    if (localStorage.getItem(`liked-${index + 1}`) === 'true') {
+      likeButton.classList.add('liked');
+    }
+
+    // Add the heart icon
+    likeButton.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart-icon">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    `;
+
+    // Add click event listener
+    likeButton.addEventListener('click', () => toggleLikeState(index + 1));
+
+    // Append the like button to the portfolio item
+    gridItem.appendChild(likeButton);
+
     fragment.appendChild(gridItem); // Append to fragment instead of directly to the DOM
   });
 
   grid.appendChild(fragment); // Append the fragment to the DOM in one go
+}
+
+// Function to toggle like state
+function toggleLikeState(itemId) {
+  const gridLikeButton = document.querySelector(`.grid-heart[data-id="${itemId}"]`);
+  const modalLikeButton = document.querySelector(`.modal-heart[data-id="${itemId}"]`);
+
+  // Toggle liked state
+  if (gridLikeButton) gridLikeButton.classList.toggle('liked');
+  if (modalLikeButton) modalLikeButton.classList.toggle('liked');
+
+  // Save liked state in localStorage
+  const isLiked = gridLikeButton?.classList.contains('liked') || modalLikeButton?.classList.contains('liked');
+  localStorage.setItem(`liked-${itemId}`, isLiked ? 'true' : 'false');
+}
+
+// Function to initialize the full-screen modal
+function initializeModal() {
+  const modal = document.getElementById('full-screen-modal');
+  if (!modal) return; // Exit if modal element doesn't exist
+  const modalImg = document.getElementById('modal-img');
+  const modalVideo = document.getElementById('modal-video');
+  const modalCaption = document.getElementById('caption');
+  const closeModal = document.querySelector('.close');
+  const gridItems = document.querySelectorAll('.grid-item');
+
+  gridItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      const video = item.querySelector('video');
+
+      if (img) {
+        modalImg.src = img.src;
+        modalImg.style.display = 'block';
+        modalVideo.style.display = 'none';
+      } else if (video) {
+        modalVideo.src = video.querySelector('source').src;
+        modalVideo.style.display = 'block';
+        modalImg.style.display = 'none';
+      }
+
+      modalCaption.innerText = item.querySelector('.overlay p').innerText;
+      modal.style.display = 'block';
+
+      // Add like button to the modal (top-right corner)
+      const modalLikeButton = document.createElement('div');
+      modalLikeButton.classList.add('heart-button', 'modal-heart');
+      modalLikeButton.setAttribute('data-id', index + 1); // Unique ID for each item
+
+      // Check localStorage for liked state
+      if (localStorage.getItem(`liked-${index + 1}`) === 'true') {
+        modalLikeButton.classList.add('liked');
+      }
+
+      // Add the heart icon
+      modalLikeButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart-icon">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      `;
+
+      // Add click event listener
+      modalLikeButton.addEventListener('click', () => toggleLikeState(index + 1));
+
+      // Append the like button to the modal
+      modal.appendChild(modalLikeButton);
+    });
+  });
+
+  // Close modal
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    modalImg.src = '';
+    modalVideo.src = '';
+    modalCaption.innerText = '';
+    modal.querySelector('.modal-heart')?.remove(); // Remove modal like button
+  });
 }
 
 // Function to load content dynamically with smooth transitions
