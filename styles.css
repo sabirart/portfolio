@@ -1841,6 +1841,53 @@ animation-fill-mode: both;
   z-index: 1200;
 }
 
+/* Like Heart section */
+.heart-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  transition: all 0.3s ease; /* Smooth transitions */
+  background-color: rgba(255, 235, 235, 0.4);
+  backdrop-filter: blur(6px); /* Background blur effect */
+  -webkit-backdrop-filter: blur(6px); /* For Safari support */
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-button:hover {
+  background-color: rgba(255, 235, 235, 0.7);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  transition: fill 0.2s, stroke 0.2s;
+  stroke: #ff4d4d; /* Red stroke by default */
+  fill: transparent; /* No fill by default */
+}
+
+.heart-button.liked .heart-icon {
+  fill: #ff4d4d; /* Fill the heart with red when liked */
+  stroke: #ff4d4d; /* Ensure stroke is also red */
+}
+
+/* Optional: Add a subtle animation when liked */
+@keyframes likeAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.heart-button.liked .heart-icon {
+  animation: likeAnimation 0.4s ease-in-out;
+}
+
 @media (max-width: 768px) {
   .modal {
     align-items: center;
