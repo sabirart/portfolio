@@ -122,30 +122,6 @@ html, body {
   background: #777; /* Slightly lighter on hover */
 }
 
-/* Glossy Shine Effect - Light Theme */
-.light-theme .portfolio-btn::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -100%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0)
-  );
-  transform: rotate(45deg);
-  transition: left 0.8s ease;
-  opacity: 0;
-}
-
-.light-theme .portfolio-btn:hover::before {
-  opacity: 1;
-  left: 100%;
-}
-
 /* Light Theme */
 /* Light Theme - Headings (h1 to h6) */
 .light-theme h1,
@@ -862,61 +838,159 @@ p {
   }
 }
 
-/* Portfolio Button */
+/* Portfolio Button - Enhanced Smooth Glass Effect */
 .portfolio-btn {
   margin-left: 40px;
-  padding: 12px 25px;
+  padding: 14px 30px;
   font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #ff5252, #ff6b6b);
-  border: none;
-  border-radius: 6px;
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid transparent;
+  border-radius: 32px;
+  transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), backdrop-filter 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
   font-family: 'Inter', sans-serif;
   width: auto;
   text-align: center;
-  margin-right: 10px; /* 10px gap if needed */
   position: relative;
-  overflow: hidden; /* Ensure the pseudo-element doesn't overflow */
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.06);
+  animation: borderLoop 6s infinite linear, glowPulse 4s infinite ease-in-out;
 }
 
-/* Glossy Shine Effect */
+/* Gradient Border Animation */
+@keyframes borderLoop {
+  0% { border-color: #808080; }
+  25% { border-color: #b0b0b0; }
+  50% { border-color: #505050; }
+  75% { border-color: #b0b0b0; }
+  100% { border-color: #808080; }
+}
+
+/* Glow Pulse Animation */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 5px 20px rgba(255, 255, 255, 0.06); }
+  50% { box-shadow: 0 5px 30px rgba(255, 255, 255, 0.12); }
+}
+
+/* Enhanced Hover Effect */
+.portfolio-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px) scale(1.02);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.15);
+  animation: borderLoop 4s infinite linear, glowPulse 2s infinite ease-in-out;
+}
+
+/* Focus Outline with Gradient */
+.portfolio-btn:focus-visible {
+  outline: 2px solid rgba(192, 192, 192, 0.8);
+  outline-offset: 2px;
+}
+
+/* Pressed Effect */
+.portfolio-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Gradient Overlay */
 .portfolio-btn::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -100%; /* Start the shine outside the button */
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0)
-  );
-  transform: rotate(45deg);
-  transition: left 0.8s ease; /* Animate the left position */
-  opacity: 0; /* Hide by default */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  pointer-events: none;
+  border-radius: 32px;
 }
 
 .portfolio-btn:hover::before {
-  opacity: 1; /* Show the glossy effect on hover */
-  left: 100%; /* Move the shine across the button */
+  opacity: 1;
 }
 
-.portfolio-btn:hover {
-  background: linear-gradient(135deg, #ff6b6b, #ff5252);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 82, 82, 0.4); /* Add a shadow for depth */
+/* Light Theme - Enhanced Portfolio Button */
+.light-theme .portfolio-btn {
+  color: #000;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid transparent;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  animation: borderLoopLight 6s infinite linear, glowPulseLight 4s infinite ease-in-out;
 }
 
-.portfolio-btn:focus-visible {
-  outline: 2px solid #ff6b6b;
+/* Light Theme Gradient Border Animation */
+@keyframes borderLoopLight {
+  0% { border-color: #d0d0d0; }
+  25% { border-color: #e0e0e0; }
+  50% { border-color: #a0a0a0; }
+  75% { border-color: #e0e0e0; }
+  100% { border-color: #d0d0d0; }
 }
 
-.portfolio-btn:active {
-  transform: translateY(0);
+/* Light Theme Glow Pulse Animation */
+@keyframes glowPulseLight {
+  0%, 100% { box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); }
+  50% { box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2); }
+}
+
+/* Light Theme Hover Effect */
+.light-theme .portfolio-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px) scale(1.02);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Light Theme Focus Outline */
+.light-theme .portfolio-btn:focus-visible {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.3);
+}
+
+/* Light Theme Pressed Effect */
+.light-theme .portfolio-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Light Theme Gradient Overlay */
+.light-theme .portfolio-btn::before {
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.light-theme .portfolio-btn:hover::before {
+  opacity: 1;
+}
+
+/* Light Theme Gradient Border */
+.light-theme .portfolio-btn::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 32px;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.light-theme .portfolio-btn:hover::after {
+  opacity: 1;
 }
 
 /* Tablets and Small Screens */
